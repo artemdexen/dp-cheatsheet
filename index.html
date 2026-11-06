@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#111214">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Шпаргалка">
+<title>Шпаргалка оператора</title>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<style>
+@font-face{font-family:'Golos Text';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/golos-text-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Golos Text';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/golos-text-cyrillic-400-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Golos Text';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/golos-text-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Golos Text';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/golos-text-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Golos Text';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/golos-text-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Golos Text';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/golos-text-cyrillic-600-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Fira Sans Extra Condensed';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/fira-sans-extra-condensed-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Fira Sans Extra Condensed';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/fira-sans-extra-condensed-cyrillic-400-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Fira Sans Extra Condensed';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/fira-sans-extra-condensed-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Fira Sans Extra Condensed';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/fira-sans-extra-condensed-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Fira Sans Extra Condensed';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/fira-sans-extra-condensed-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Fira Sans Extra Condensed';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/fira-sans-extra-condensed-cyrillic-600-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+:root{
+  --bg:#111214;
+  --surface:#191a1d;
+  --surface-2:#222327;
+  --line:#2c2d32;
+  --text:#efeae2;
+  --muted:#8f8b85;
+  --accent:#ffae52;   /* вольфрам, 3200K */
+  --cool:#a3cbff;     /* дневной, 5600K+ */
+  --bad:#ff6e5e;
+  --display:"Fira Sans Extra Condensed","Arial Narrow",sans-serif;
+  --body:"Golos Text",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  /* layout: липкая полоса инструментов сверху, один инструмент на экран, сначала результат, потом вводы */
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);-webkit-text-size-adjust:100%;}
+body{min-height:100%;-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit}
+
+.top{
+  position:sticky;top:0;z-index:10;background:rgba(17,18,20,.92);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  padding-top:calc(env(safe-area-inset-top) + 10px);
+}
+.brand{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:0 max(16px, env(safe-area-inset-right)) 0 max(16px, env(safe-area-inset-left));
+  font-family:var(--display);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+}
+.brand b{color:var(--text);font-weight:600}
+.tabs{
+  display:flex;gap:22px;overflow-x:auto;scrollbar-width:none;
+  padding:10px max(16px, env(safe-area-inset-right)) 0 max(16px, env(safe-area-inset-left));
+}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+  flex:none;background:none;border:0;padding:6px 0 10px;cursor:pointer;
+  font-family:var(--display);font-size:18px;font-weight:500;letter-spacing:.02em;color:var(--muted);
+  border-bottom:2px solid transparent;
+}
+.tab[aria-selected="true"]{color:var(--text);border-bottom-color:var(--accent)}
+.tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.kelvin{height:3px;background:linear-gradient(90deg,#ff8a12,#ffb46b 25%,#ffe2c2 45%,#fff6ee 58%,#e6ecff 75%,#b8ccff)}
+
+main{
+  max-width:560px;margin:0 auto;
+  padding:18px max(16px, env(safe-area-inset-right)) calc(env(safe-area-inset-bottom) + 40px) max(16px, env(safe-area-inset-left));
+}
+.tool{display:flex;flex-direction:column;gap:18px}
+.tool[hidden]{display:none}
+h1{font-family:var(--display);font-weight:600;font-size:34px;line-height:1;margin:0;letter-spacing:.01em;text-wrap:balance}
+.lede{margin:-8px 0 0;color:var(--muted);font-size:14px;line-height:1.45;max-width:60ch}
+
+.readout{
+  background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 16px 14px;
+  display:flex;flex-direction:column;gap:6px;
+}
+.label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.big{font-family:var(--display);font-weight:500;font-size:60px;line-height:.95;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.big small{font-size:24px;color:var(--muted);font-weight:400;margin-left:4px;letter-spacing:0}
+.sub{color:var(--muted);font-size:14px;line-height:1.4}
+.warm{color:var(--accent)} .cool{color:var(--cool)} .bad{color:var(--bad)}
+
+.group{display:flex;flex-direction:column;gap:10px}
+.group-title{font-family:var(--display);font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:6px 0 0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.field{display:flex;flex-direction:column;gap:5px;min-width:0}
+.field>span:first-child{font-size:12px;color:var(--muted);line-height:1.2}
+.box{
+  display:flex;align-items:baseline;gap:6px;background:var(--surface-2);border:1px solid var(--line);
+  border-radius:10px;padding:0 12px;min-height:48px;
+}
+.box:focus-within{border-color:var(--accent)}
+.box input{
+  flex:1;min-width:0;width:100%;background:none;border:0;outline:none;color:var(--text);
+  font-family:var(--body);font-size:20px;font-variant-numeric:tabular-nums;padding:11px 0;
+}
+.box input:disabled{color:var(--muted)}
+.unit{color:var(--muted);font-size:14px;white-space:nowrap}
+
+.seg{display:flex;background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:3px;gap:3px}
+.seg button{flex:1;border:0;background:none;padding:9px 6px;border-radius:8px;font-size:14px;color:var(--muted);cursor:pointer;min-height:38px}
+.seg button[aria-pressed="true"]{background:var(--surface-2);color:var(--text);box-shadow:inset 0 0 0 1px var(--line)}
+.seg button:focus-visible{outline:2px solid var(--accent)}
+
+.rows{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15px}
+.row>span:first-child{color:var(--muted)}
+.row>span:last-child{font-variant-numeric:tabular-nums;text-align:right}
+.row.hl>span:last-child{color:var(--accent)}
+
+.note{font-size:13px;color:var(--muted);line-height:1.45;margin:0}
+.formula{font-family:var(--display);font-size:15px;color:var(--muted);letter-spacing:.02em}
+.err{background:rgba(255,110,94,.1);border:1px solid rgba(255,110,94,.35);color:#ffb3aa;border-radius:10px;padding:10px 12px;font-size:14px;line-height:1.4}
+.err[hidden]{display:none}
+.chip{display:inline-block;font-size:12px;padding:3px 8px;border-radius:99px;border:1px solid var(--line);color:var(--muted)}
+.chip.warnchip{border-color:rgba(255,174,82,.45);color:var(--accent)}
+
+/* Цвет */
+.swatch{border-radius:16px;min-height:150px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--line)}
+.swatch .big{font-size:52px}
+.copyrow{display:flex;gap:8px;flex-wrap:wrap}
+.btn{background:var(--surface-2);border:1px solid var(--line);border-radius:9px;padding:8px 12px;font-size:14px;cursor:pointer}
+.btn:active{transform:translateY(1px)}
+.btn:focus-visible{outline:2px solid var(--accent)}
+.chan{display:grid;grid-template-columns:22px 1fr 76px;gap:12px;align-items:center}
+.chan b{font-family:var(--display);font-size:20px;font-weight:600}
+.chan .box{min-height:42px}
+.chan .box input{font-size:18px;padding:8px 0}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;margin:0}
+input[type=range]::-webkit-slider-runnable-track{height:10px;border-radius:5px;background:var(--track,#333)}
+input[type=range]::-moz-range-track{height:10px;border-radius:5px;background:var(--track,#333)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;margin-top:-7px;border-radius:50%;background:#fff;border:3px solid var(--bg);box-shadow:0 0 0 1px rgba(255,255,255,.4)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:#fff;border:3px solid var(--bg)}
+input[type=range]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* Кельвин-шкала */
+.kstrip{position:relative;height:56px;margin-top:4px}
+.kstrip .bar{position:absolute;left:0;right:0;top:18px;height:12px;border-radius:6px}
+.kstrip .mk{position:absolute;top:10px;width:2px;height:28px;background:var(--text);transform:translateX(-1px)}
+.kstrip .mk.cam{background:var(--accent);width:3px;height:34px;top:7px}
+.kstrip .mk span{position:absolute;top:31px;left:50%;transform:translateX(-50%);font-size:11px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.kstrip .mk.cam span{top:-16px;color:var(--accent)}
+.kscale{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:15px}
+th,td{padding:9px 6px;text-align:right;border-bottom:1px solid var(--line)}
+th{font-weight:500;font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+th:first-child,td:first-child{text-align:left;color:var(--muted)}
+tr.hl td{background:rgba(255,174,82,.07)}
+tr.hl td:first-child{color:var(--accent)}
+
+svg{display:block;width:100%;height:auto}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:8px}
+
+/* Золото */
+.split{display:flex;height:34px;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.split div{display:flex;align-items:center;justify-content:center;font-size:13px;font-variant-numeric:tabular-nums}
+.split .a{background:rgba(255,174,82,.22);color:var(--accent)}
+.split .b{background:var(--surface-2);color:var(--muted)}
+
+/* Карта */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.card{border:1px solid var(--line);border-radius:12px;padding:10px;background:var(--surface);display:flex;flex-direction:column;gap:4px}
+.card b{font-family:var(--display);font-size:22px;font-weight:600}
+.card span{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.card.ok{border-color:rgba(255,174,82,.55)}
+.card.ok span.fit{color:var(--accent)}
+.card.no{opacity:.55}
+
+/* Камеры */
+.camlist{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.cam{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:12px 2px;cursor:pointer;width:100%}
+.cam:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.cam .nm{font-family:var(--display);font-size:21px;font-weight:600;line-height:1.1}
+.cam .br{font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.cam .right{text-align:right;font-variant-numeric:tabular-nums;font-size:13px;color:var(--muted);line-height:1.35}
+.cam .right b{display:block;color:var(--text);font-family:var(--display);font-size:20px;font-weight:500}
+.cam.stack{grid-template-columns:1fr}
+.tags{display:flex;gap:6px;flex-wrap:wrap;grid-column:1 / -1}
+.tag{font-size:11px;padding:2px 7px;border-radius:99px;border:1px solid var(--line);color:var(--muted);letter-spacing:.03em}
+.tag.gs{border-color:rgba(255,174,82,.5);color:var(--accent)}
+.tag.old{border-style:dashed}
+.back{align-self:flex-start;background:none;border:0;color:var(--accent);font-size:15px;padding:4px 0;cursor:pointer}
+.back:focus-visible{outline:2px solid var(--accent)}
+.modes{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.modes::-webkit-scrollbar{display:none}
+.mode{flex:none;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 10px;cursor:pointer;min-width:118px}
+.mode b{display:block;font-size:13px;font-weight:500}
+.mode span{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.mode[aria-pressed="true"]{border-color:var(--accent);background:rgba(255,174,82,.08)}
+.mode:focus-visible{outline:2px solid var(--accent)}
+.presets{display:flex;gap:8px;flex-wrap:wrap}
+.ok-t{color:#8fdc9a!important}.edge-t{color:var(--accent)!important}.no-t{color:var(--bad)!important}
+.src a{color:var(--cool)}
+.sel{flex:1;min-width:0;width:100%;background:none;border:0;outline:none;color:var(--text);font-family:var(--body);font-size:17px;padding:12px 0;-webkit-appearance:none;appearance:none}
+.sel option,.sel optgroup{background:#1a1b1e;color:#efeae2}
+.chipbar{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.chipbar::-webkit-scrollbar{display:none}
+.chipbar button{flex:none;border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:8px 14px;font-size:14px;color:var(--muted);cursor:pointer}
+.chipbar button[aria-pressed="true"]{color:var(--text);border-color:var(--accent);background:rgba(255,174,82,.08)}
+.chipbar button:focus-visible{outline:2px solid var(--accent)}
+.btn[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
+.src{font-size:13px;color:var(--muted);line-height:1.6;margin:0}
+
+@media (max-width:360px){
+  .big{font-size:50px}
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand"><b>Шпаргалка оператора</b></div>
+  <nav class="tabs" role="tablist" aria-label="Инструменты">
+    <button class="tab" role="tab" data-tool="cameras" id="tab-cameras">Камеры</button>
+    <button class="tab" role="tab" data-tool="lenses" id="tab-lenses">Объективы</button>
+    <button class="tab" role="tab" data-tool="color" id="tab-color">Цвет</button>
+    <button class="tab" role="tab" data-tool="wb" id="tab-wb">Баланс белого</button>
+    <button class="tab" role="tab" data-tool="light" id="tab-light">Свет</button>
+    <button class="tab" role="tab" data-tool="dolly" id="tab-dolly">Долли-зум</button>
+    <button class="tab" role="tab" data-tool="card" id="tab-card">Карта</button>
+    <button class="tab" role="tab" data-tool="cone" id="tab-cone">Конус</button>
+    <button class="tab" role="tab" data-tool="golden" id="tab-golden">Золото</button>
+  </nav>
+  <div class="kelvin" aria-hidden="true"></div>
+</header>
+
+<main>
+
+<!-- КАМЕРЫ -->
+<section class="tool" id="tool-cameras" role="tabpanel" aria-labelledby="tab-cameras" hidden>
+  <div class="tool" id="cam-listview">
+    <h1>Камеры</h1>
+    <p class="lede" id="cam-lede">Спецификации с сайтов производителей. Нажми на камеру: режимы сенсора, угол обзора и покрытие объективом.</p>
+    <label class="field"><span>Поиск</span><span class="box"><input id="cam-q" data-bind="camQ" autocomplete="off" placeholder="alexa, raptor, venice…" spellcheck="false"></span></label>
+    <div class="seg" data-seg="camBrand" role="group" aria-label="Бренд">
+      <button data-v="all" id="cb-all">Все</button>
+      <button data-v="ARRI" id="cb-arri">ARRI</button>
+      <button data-v="RED" id="cb-red">RED</button>
+      <button data-v="Sony" id="cb-sony">Sony</button>
+      <button data-v="Blackmagic" id="cb-bmd">BMD</button>
+    </div>
+    <div class="camlist" id="cam-list"></div>
+    <p class="note">Справа: максимальный fps и размер сенсора в миллиметрах. Метка GS означает глобальный затвор.</p>
+  </div>
+
+  <div class="tool" id="cam-detail" hidden>
+    <button class="back" id="cam-back">← Все камеры</button>
+    <div id="cam-head"></div>
+    <div class="readout">
+      <span class="label" id="cam-modelabel">Сенсор</span>
+      <span class="big" id="cam-big"></span>
+      <span class="sub" id="cam-bigsub"></span>
+    </div>
+
+    <div class="group-title">Режим сенсора</div>
+    <div class="modes" id="cam-modes" role="group" aria-label="Режимы сенсора"></div>
+    <p class="note" id="cam-modenote"></p>
+
+    <div class="group-title">Покрытие объективом</div>
+    <label class="field"><span>Объектив из базы</span><span class="box"><select id="cam-lens" class="sel" aria-label="Объектив"></select></span></label>
+    <div class="presets" id="cam-lensvars"></div>
+    <label class="field"><span>Круг изображения, мм (подставится из базы или введи свой)</span><span class="box"><input id="cam-ic" data-bind="lensIC" inputmode="decimal" autocomplete="off"><span class="unit">мм</span></span></label>
+    <div class="presets" id="cam-presets">
+      <button class="btn" data-ic="31,1" id="ic-s35">S35 · 31,1</button>
+      <button class="btn" data-ic="43,3" id="ic-ff">FF · 43,3</button>
+      <button class="btn" data-ic="46,3" id="ic-vv">VV/LF · 46,3</button>
+      <button class="btn" data-ic="59,9" id="ic-65">65 мм · 59,9</button>
+    </div>
+    <div class="readout">
+      <span class="label">Выбранный режим</span>
+      <span class="big" id="cam-covbig" style="font-size:40px;overflow-wrap:anywhere"></span>
+      <span class="sub" id="cam-covsub"></span>
+      <div class="diagram" style="padding:4px"><svg id="cam-cov" viewBox="0 0 320 190" role="img" aria-label="Круг изображения поверх кадра"></svg></div>
+    </div>
+    <div class="rows" id="cam-covrows"></div>
+    <p class="note">Пресеты равны диагоналям форматов: S35 4-perf, полный кадр 36 × 24, VistaVision 40,96 × 21,6, ALEXA 265. Реальный круг у конкретного объектива бывает больше или меньше и может меняться с фокусом и диафрагмой. Анаморфот покрывает так же: сжатие на круг изображения не влияет.</p>
+
+    <div class="group-title">Угол обзора</div>
+    <label class="field"><span>Фокусное расстояние</span><span class="box"><input id="cam-f" data-bind="camF" inputmode="decimal" autocomplete="off"><span class="unit">мм</span></span></label>
+    <div class="rows" id="cam-fov"></div>
+    <button class="btn" id="cam-todolly">Взять ширину режима в долли-зум</button>
+
+    <div class="group-title">Характеристики</div>
+    <div class="rows" id="cam-specs"></div>
+    <p class="src" id="cam-src"></p>
+  </div>
+</section>
+
+<!-- ОБЪЕКТИВЫ -->
+<section class="tool" id="tool-lenses" role="tabpanel" aria-labelledby="tab-lenses" hidden>
+  <div class="tool" id="lens-listview">
+    <h1>Объективы</h1>
+    <p class="lede" id="lens-lede">Круги изображения популярных кинообъективов. Открой серию, чтобы увидеть, какие камеры и режимы она покрывает.</p>
+    <label class="field"><span>Поиск</span><span class="box"><input id="lens-q" data-bind="lensQ" autocomplete="off" placeholder="signature, s4, vespid…" spellcheck="false"></span></label>
+    <div class="chipbar" data-seg="lensBrand" role="group" aria-label="Производитель" id="lens-brands"></div>
+    <div class="camlist" id="lens-list"></div>
+  </div>
+  <div class="tool" id="lens-detail" hidden>
+    <button class="back" id="lens-back">← Все объективы</button>
+    <div id="lens-head"></div>
+    <div class="readout">
+      <span class="label">Круг изображения</span>
+      <span class="big" id="lens-big"></span>
+      <span class="sub" id="lens-sub"></span>
+    </div>
+    <div class="presets" id="lens-vars"></div>
+    <div class="rows" id="lens-specs"></div>
+    <div class="group-title">Какие камеры покрывает</div>
+    <p class="note">Для каждой камеры показан самый большой режим без виньетирования. Нажми на камеру, чтобы открыть её карточку с этим объективом.</p>
+    <div class="camlist" id="lens-cams"></div>
+    <p class="src" id="lens-src"></p>
+  </div>
+</section>
+
+<!-- ЦВЕТ -->
+<section class="tool" id="tool-color" role="tabpanel" aria-labelledby="tab-color">
+  <h1>RGB → HSL</h1>
+  <p class="lede">Каналы 0–255. Ниже тот же цвет в HSV и в долях 0–1, как в Cinema 4D и Resolve.</p>
+  <div class="swatch" id="c-swatch">
+    <span class="label" id="c-swlabel">HEX</span>
+    <span class="big" id="c-hexbig">#FF1C7D</span>
+  </div>
+  <div class="group">
+    <div class="chan"><b style="color:#ff6b6b">R</b><input type="range" min="0" max="255" step="1" data-bind="r" id="c-r-range" aria-label="Красный"><span class="box"><input id="c-r" data-bind="r" inputmode="numeric" autocomplete="off" aria-label="R"></span></div>
+    <div class="chan"><b style="color:#6ee28a">G</b><input type="range" min="0" max="255" step="1" data-bind="g" id="c-g-range" aria-label="Зелёный"><span class="box"><input id="c-g" data-bind="g" inputmode="numeric" autocomplete="off" aria-label="G"></span></div>
+    <div class="chan"><b style="color:#7aa8ff">B</b><input type="range" min="0" max="255" step="1" data-bind="b" id="c-b-range" aria-label="Синий"><span class="box"><input id="c-b" data-bind="b" inputmode="numeric" autocomplete="off" aria-label="B"></span></div>
+    <label class="field"><span>HEX</span><span class="box"><input id="c-hex" autocomplete="off" autocapitalize="characters" spellcheck="false"></span></label>
+  </div>
+  <div class="err" id="c-err" hidden></div>
+  <div class="rows">
+    <div class="row"><span>HSL</span><span id="c-hsl"></span></div>
+    <div class="row"><span>HSV</span><span id="c-hsv"></span></div>
+    <div class="row"><span>RGB 0–1</span><span id="c-float"></span></div>
+    <div class="row"><span>RGB, %</span><span id="c-pct"></span></div>
+  </div>
+  <div class="copyrow">
+    <button class="btn" data-copy="c-hexbig" id="cp-hex">Копировать HEX</button>
+    <button class="btn" data-copy="c-hsl" id="cp-hsl">Копировать HSL</button>
+    <button class="btn" data-copy="c-float" id="cp-float">Копировать 0–1</button>
+  </div>
+  <p class="note" id="c-copied" aria-live="polite"></p>
+</section>
+
+<!-- БАЛАНС БЕЛОГО -->
+<section class="tool" id="tool-wb" role="tabpanel" aria-labelledby="tab-wb" hidden>
+  <h1>Баланс белого</h1>
+  <p class="lede">Считаю в майредах (M = 1 000 000 / K): одинаковый шаг в майредах глаз видит как одинаковый сдвиг цвета.</p>
+
+  <div class="group-title">Два источника → баланс на камере</div>
+  <div class="grid">
+    <label class="field"><span>Источник 1</span><span class="box"><input id="w-k1" data-bind="k1" inputmode="decimal" autocomplete="off"><span class="unit">K</span></span></label>
+    <label class="field"><span>Источник 2</span><span class="box"><input id="w-k2" data-bind="k2" inputmode="decimal" autocomplete="off"><span class="unit">K</span></span></label>
+  </div>
+  <div class="err" id="w-err1" hidden></div>
+  <div class="readout">
+    <span class="label">Поставь на камере</span>
+    <span class="big" id="w-mid">5283<small>K</small></span>
+    <span class="sub" id="w-midsub"></span>
+    <div class="kstrip" id="w-strip" aria-hidden="true"><div class="bar" id="w-bar"></div></div>
+    <div class="kscale"><span>2000K</span><span>3200K</span><span>5600K</span><span>10 000K</span></div>
+  </div>
+
+  <div class="group-title">Сдвиг баланса на N майред</div>
+  <div class="grid">
+    <label class="field"><span>Исходный баланс</span><span class="box"><input id="w-k0" data-bind="k0" inputmode="decimal" autocomplete="off"><span class="unit">K</span></span></label>
+    <label class="field"><span>Сдвиг</span><span class="box"><input id="w-shift" data-bind="shift" inputmode="decimal" autocomplete="off"><span class="unit">майред</span></span></label>
+  </div>
+  <input type="range" min="0" max="300" step="5" data-bind="shift" id="w-shift-range" aria-label="Сдвиг в майредах" style="--track:linear-gradient(90deg,#333,#555)">
+  <div class="seg" data-seg="wbDir" role="group" aria-label="Направление">
+    <button data-v="warm" id="w-dir-warm">Картинка теплее</button>
+    <button data-v="cool" id="w-dir-cool">Картинка холоднее</button>
+  </div>
+  <div class="err" id="w-err2" hidden></div>
+  <div class="readout">
+    <span class="label" id="w-shiftlabel">Поставь на камере</span>
+    <span class="big" id="w-shifted">6512<small>K</small></span>
+    <span class="sub" id="w-shiftsub"></span>
+  </div>
+  <table aria-label="Таблица сдвигов">
+    <thead><tr><th>Майред</th><th>Теплее</th><th>Холоднее</th></tr></thead>
+    <tbody id="w-table"></tbody>
+  </table>
+  <p class="note">Теплее: на камере ставишь больше кельвинов, картинка уходит в тёплую сторону. Холоднее: наоборот. Прочерк значит, что от этого баланса так далеко сдвинуться нельзя.</p>
+</section>
+
+<!-- СВЕТ -->
+<section class="tool" id="tool-light" role="tabpanel" aria-labelledby="tab-light" hidden>
+  <h1>Прибор между героями</h1>
+  <p class="lede">Прибор висит посередине между двумя говорящими. Угол считается от горизонтали на уровне головы.</p>
+  <div class="seg" data-seg="lmode" role="group" aria-label="Что известно">
+    <button data-v="angle" id="l-mode-angle">Знаю угол</button>
+    <button data-v="height" id="l-mode-height">Знаю высоту</button>
+  </div>
+  <div class="grid">
+    <label class="field"><span>Рост героев</span><span class="box"><input id="l-h" data-bind="lh" inputmode="decimal" autocomplete="off"><span class="unit">м</span></span></label>
+    <label class="field"><span>Между героями</span><span class="box"><input id="l-d" data-bind="ld" inputmode="decimal" autocomplete="off"><span class="unit">м</span></span></label>
+    <label class="field" id="l-f-angle"><span>Угол падения</span><span class="box"><input id="l-a" data-bind="la" inputmode="decimal" autocomplete="off"><span class="unit">°</span></span></label>
+    <label class="field" id="l-f-height" hidden><span>Высота прибора от пола</span><span class="box"><input id="l-H" data-bind="lH" inputmode="decimal" autocomplete="off"><span class="unit">м</span></span></label>
+  </div>
+  <div class="seg" data-seg="lref" role="group" aria-label="Уровень отсчёта">
+    <button data-v="head" id="l-ref-head">От макушки</button>
+    <button data-v="eyes" id="l-ref-eyes">От уровня глаз</button>
+  </div>
+  <div class="err" id="l-err" hidden></div>
+  <div class="readout">
+    <span class="label" id="l-biglabel">Высота прибора от пола</span>
+    <span class="big" id="l-big">5,8<small>м</small></span>
+    <span class="sub" id="l-sub"></span>
+  </div>
+  <div class="diagram"><svg id="l-svg" viewBox="0 0 340 210" role="img" aria-label="Схема: прибор над двумя героями"></svg></div>
+  <div class="rows">
+    <div class="row"><span>От головы до прибора</span><span id="l-dist"></span></div>
+    <div class="row"><span>Над уровнем отсчёта</span><span id="l-rise"></span></div>
+    <div class="row"><span>Уровень отсчёта от пола</span><span id="l-ref"></span></div>
+  </div>
+  <p class="note">Уровень глаз принят как 13/14 роста, как в исходной таблице.</p>
+</section>
+
+<!-- ДОЛЛИ-ЗУМ -->
+<section class="tool" id="tool-dolly" role="tabpanel" aria-labelledby="tab-dolly" hidden>
+  <h1>Долли-зум</h1>
+  <p class="lede">Объект остаётся того же размера в кадре, фон меняет масштаб. F1 · D2 = F2 · D1.</p>
+  <div class="seg" data-seg="dmode" role="group" aria-label="Что найти">
+    <button data-v="focal" id="d-mode-focal">Найти конечный фокус</button>
+    <button data-v="dist" id="d-mode-dist">Найти дистанцию</button>
+  </div>
+  <div class="grid">
+    <label class="field"><span>Начальный фокус F1</span><span class="box"><input id="d-F1" data-bind="F1" inputmode="decimal" autocomplete="off"><span class="unit">мм</span></span></label>
+    <label class="field"><span>Начальная дистанция D1</span><span class="box"><input id="d-D1" data-bind="D1" inputmode="decimal" autocomplete="off"><span class="unit">м</span></span></label>
+    <label class="field" id="d-f-D2"><span>Конечная дистанция D2</span><span class="box"><input id="d-D2" data-bind="D2" inputmode="decimal" autocomplete="off"><span class="unit">м</span></span></label>
+    <label class="field" id="d-f-F2" hidden><span>Конечный фокус F2</span><span class="box"><input id="d-F2" data-bind="F2" inputmode="decimal" autocomplete="off"><span class="unit">мм</span></span></label>
+    <label class="field"><span>От объекта до фона</span><span class="box"><input id="d-bg" data-bind="bg" inputmode="decimal" autocomplete="off"><span class="unit">м</span></span></label>
+  </div>
+  <div class="group">
+    <span class="label">Ширина сенсора</span>
+    <div class="seg" data-seg="sensor" role="group" aria-label="Сенсор">
+      <button data-v="s35" id="d-s35">S35 · 24,9</button>
+      <button data-v="ff" id="d-ff">FF · 36</button>
+      <button data-v="custom" id="d-custom">Свой</button>
+    </div>
+    <label class="field"><span>Ширина сенсора</span><span class="box"><input id="d-sw" data-bind="sw" inputmode="decimal" autocomplete="off"><span class="unit">мм</span></span></label>
+    <p class="note" id="d-swnote"></p>
+  </div>
+  <div class="err" id="d-err" hidden></div>
+  <div class="readout">
+    <span class="label" id="d-biglabel">Конечный фокус F2</span>
+    <span class="big" id="d-big">105<small>мм</small></span>
+    <span class="sub" id="d-sub"></span>
+  </div>
+  <div class="rows">
+    <div class="row"><span>Ширина кадра на объекте</span><span id="d-w"></span></div>
+    <div class="row"><span>Ширина фона в кадре</span><span id="d-wb"></span></div>
+    <div class="row hl"><span>Масштаб фона</span><span id="d-scale"></span></div>
+    <div class="row"><span>Горизонтальный угол обзора</span><span id="d-fov"></span></div>
+  </div>
+</section>
+
+<!-- КАРТА -->
+<section class="tool" id="tool-card" role="tabpanel" aria-labelledby="tab-card" hidden>
+  <h1>Объём карты</h1>
+  <p class="lede">Сколько места займёт запись при заданном битрейте и сколько влезет на карту.</p>
+  <div class="grid">
+    <label class="field"><span>Битрейт</span><span class="box"><input id="m-br" data-bind="br" inputmode="decimal" autocomplete="off"><span class="unit" id="m-brunit">Мбит/с</span></span></label>
+    <label class="field"><span>Камер</span><span class="box"><input id="m-cams" data-bind="cams" inputmode="numeric" autocomplete="off"><span class="unit">шт</span></span></label>
+    <label class="field"><span>Часы</span><span class="box"><input id="m-th" data-bind="th" inputmode="numeric" autocomplete="off"><span class="unit">ч</span></span></label>
+    <label class="field"><span>Минуты</span><span class="box"><input id="m-tm" data-bind="tm" inputmode="numeric" autocomplete="off"><span class="unit">мин</span></span></label>
+  </div>
+  <div class="seg" data-seg="brUnit" role="group" aria-label="Единицы битрейта">
+    <button data-v="mbit" id="m-u-mbit">Мбит/с</button>
+    <button data-v="mbyte" id="m-u-mbyte">МБ/с</button>
+  </div>
+  <div class="err" id="m-err" hidden></div>
+  <div class="readout">
+    <span class="label">На одну камеру</span>
+    <span class="big" id="m-big">67,5<small>ГБ</small></span>
+    <span class="sub" id="m-sub"></span>
+  </div>
+  <div class="group">
+    <span class="label">Сколько минут влезет на карту</span>
+    <div class="cards" id="m-cards"></div>
+  </div>
+  <p class="note">ГБ здесь десятичные, как на этикетке карты. После форматирования реальный объём немного меньше, так что оставляй запас.</p>
+</section>
+
+<!-- КОНУС -->
+<section class="tool" id="tool-cone" role="tabpanel" aria-labelledby="tab-cone" hidden>
+  <h1>Развёртка конуса</h1>
+  <p class="lede">Выкройка для тубуса, снута, абажура или декорации. Единицы любые, на выходе те же.</p>
+  <div class="seg" data-seg="cmode" role="group" aria-label="Тип конуса">
+    <button data-v="full" id="k-full">Полный</button>
+    <button data-v="trunc" id="k-trunc">Усечённый</button>
+  </div>
+  <div class="grid" id="k-in-full">
+    <label class="field"><span>Высота H</span><span class="box"><input id="k-H" data-bind="cH" inputmode="decimal" autocomplete="off"></span></label>
+    <label class="field"><span>Диаметр основания D</span><span class="box"><input id="k-D" data-bind="cD" inputmode="decimal" autocomplete="off"></span></label>
+  </div>
+  <div class="grid three" id="k-in-trunc" hidden>
+    <label class="field"><span>Больший D1</span><span class="box"><input id="k-D1" data-bind="tD1" inputmode="decimal" autocomplete="off"></span></label>
+    <label class="field"><span>Меньший D2</span><span class="box"><input id="k-D2" data-bind="tD2" inputmode="decimal" autocomplete="off"></span></label>
+    <label class="field"><span>Высота H</span><span class="box"><input id="k-tH" data-bind="tH" inputmode="decimal" autocomplete="off"></span></label>
+  </div>
+  <div class="err" id="k-err" hidden></div>
+  <div class="readout">
+    <span class="label">Угол сектора</span>
+    <span class="big" id="k-big">314,7<small>°</small></span>
+    <span class="sub" id="k-sub"></span>
+  </div>
+  <div class="diagram"><svg id="k-svg" viewBox="0 0 320 220" role="img" aria-label="Выкройка конуса"></svg></div>
+  <div class="rows" id="k-rows"></div>
+</section>
+
+<!-- ЗОЛОТО -->
+<section class="tool" id="tool-golden" role="tabpanel" aria-labelledby="tab-golden" hidden>
+  <h1>Золотое сечение</h1>
+  <p class="lede">φ ≈ 1,618. Пропорция 61,8 / 38,2 для композиции, раскладки кадра и декораций.</p>
+
+  <div class="group-title">Разделить длину</div>
+  <label class="field"><span>Длина (ширина кадра, стены, стола)</span><span class="box"><input id="g-L" data-bind="gL" inputmode="decimal" autocomplete="off"></span></label>
+  <div class="split" aria-hidden="true"><div class="a" id="g-sa"></div><div class="b" id="g-sb"></div></div>
+  <div class="rows">
+    <div class="row hl"><span>Большая часть, 61,8%</span><span id="g-big"></span></div>
+    <div class="row"><span>Меньшая часть, 38,2%</span><span id="g-small"></span></div>
+    <div class="row"><span>Линии фи-сетки от края</span><span id="g-lines"></span></div>
+  </div>
+
+  <div class="group-title">Пара к отрезку</div>
+  <label class="field"><span>Отрезок a</span><span class="box"><input id="g-a" data-bind="ga" inputmode="decimal" autocomplete="off"></span></label>
+  <div class="err" id="g-err" hidden></div>
+  <div class="rows">
+    <div class="row"><span>Если a меньшая часть, большая</span><span id="g-up"></span></div>
+    <div class="row"><span>Если a большая часть, меньшая</span><span id="g-down"></span></div>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function(){
+const PHI = (1 + Math.sqrt(5)) / 2;
+const KEY = 'dp-cheatsheet-v1';
+const TOOLS = ['cameras','lenses','color','wb','light','dolly','card','cone','golden'];
+const DEF = {
+  tool:'cameras',
+  camQ:'', camBrand:'all', camId:'', camMode:'0', camF:'35', lensIC:'46,3', swNote:'',
+  lensId:'', lensVar:'0', lensQ:'', lensBrand:'all', lensView:'',
+  r:'255', g:'28', b:'125',
+  k1:'5600', k2:'5000', k0:'5600', wbDir:'warm', shift:'25',
+  lh:'1,8', ld:'8', lmode:'angle', la:'45', lH:'3', lref:'head',
+  dmode:'focal', F1:'35', D1:'2', D2:'6', F2:'105', bg:'10', sensor:'s35', sw:'24,9',
+  br:'100', brUnit:'mbit', th:'1', tm:'30', cams:'1',
+  cmode:'full', cH:'1,85', cD:'6,66', tD1:'50', tD2:'25', tH:'12,22',
+  gL:'1920', ga:'5'
+};
+let S = Object.assign({}, DEF);
+
+const $ = id => document.getElementById(id);
+const T = (id, v) => { const el = $(id); if (el) el.textContent = v; };
+const H = (id, v) => { const el = $(id); if (el) el.innerHTML = v; };
+const num = k => { const v = parseFloat(String(S[k] ?? '').replace(/\s/g,'').replace(',', '.')); return Number.isFinite(v) ? v : NaN; };
+const f = (n, d = 1) => Number.isFinite(n) ? n.toLocaleString('ru-RU', { maximumFractionDigits: d }) : '—';
+const ok = (...xs) => xs.every(x => Number.isFinite(x));
+const big = (v, unit) => `${v}<small>${unit}</small>`;
+const showErr = (id, msg) => { const el = $(id); if (!el) return; if (msg) { el.textContent = msg; el.hidden = false; } else { el.hidden = true; } };
+const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+const rad = d => d * Math.PI / 180, deg = r => r * 180 / Math.PI;
+
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e) {} }
+function load(){ try { const s = JSON.parse(localStorage.getItem(KEY) || '{}'); if (s && typeof s === 'object') Object.assign(S, s); } catch(e) {} }
+
+/* ---------- Кельвин → цвет (приближение к излучению чёрного тела) ---------- */
+function kelvinRGB(k){
+  const t = k / 100; let r, g, b;
+  if (t <= 66) { r = 255; g = 99.4708025861 * Math.log(t) - 161.1195681661; b = t <= 19 ? 0 : 138.5177312231 * Math.log(t - 10) - 305.0447927307; }
+  else { r = 329.698727446 * Math.pow(t - 60, -0.1332047592); g = 288.1221695283 * Math.pow(t - 60, -0.0755148492); b = 255; }
+  return `rgb(${Math.round(clamp(r,0,255))},${Math.round(clamp(g,0,255))},${Math.round(clamp(b,0,255))})`;
+}
+/* шкала линейна в майредах: 2000K (500 M) слева, 10 000K (100 M) справа */
+const kPos = k => clamp((500 - 1e6 / k) / 400, 0, 1) * 100;
+(function paintKelvinBar(){
+  const stops = [];
+  for (let i = 0; i <= 10; i++) { const m = 500 - i * 40; stops.push(`${kelvinRGB(1e6 / m)} ${i * 10}%`); }
+  const bar = $('w-bar'); if (bar) bar.style.background = `linear-gradient(90deg, ${stops.join(',')})`;
+  const sc = document.querySelector('.kscale');
+  if (sc) { sc.style.position = 'relative'; sc.style.height = '14px'; sc.innerHTML = [2000,3200,4300,5600].map(k => `<span style="position:absolute;left:${kPos(k)}%;transform:translateX(${k===2000?'0':'-50%'})">${f(k,0)}K</span>`).join(''); }
+})();
+
+/* ---------- Цвет ---------- */
+function rgbToHsl(r, g, b){
+  r /= 255; g /= 255; b /= 255;
+  const max = Math.max(r,g,b), min = Math.min(r,g,b), d = max - min, l = (max + min) / 2;
+  let h = 0, s = 0;
+  if (d !== 0) {
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    if (max === r) h = (g - b) / d + (g < b ? 6 : 0);
+    else if (max === g) h = (b - r) / d + 2;
+    else h = (r - g) / d + 4;
+    h *= 60;
+  }
+  return [h, s * 100, l * 100];
+}
+function rgbToHsv(r, g, b){
+  const max = Math.max(r,g,b), min = Math.min(r,g,b), d = max - min;
+  const [h] = rgbToHsl(r,g,b);
+  return [h, max === 0 ? 0 : d / max * 100, max / 255 * 100];
+}
+const hex2 = x => x.toString(16).padStart(2, '0').toUpperCase();
+
+function renderColor(src){
+  const vals = ['r','g','b'].map(num);
+  if (!ok(...vals) || vals.some(v => v < 0 || v > 255)) { showErr('c-err', 'Каждый канал должен быть числом от 0 до 255.'); return; }
+  showErr('c-err');
+  const [r, g, b] = vals.map(v => Math.round(v));
+  const hex = '#' + hex2(r) + hex2(g) + hex2(b);
+  const [h, s, l] = rgbToHsl(r, g, b);
+  const [hv, sv, vv] = rgbToHsv(r, g, b);
+  const sw = $('c-swatch');
+  sw.style.background = `rgb(${r},${g},${b})`;
+  const lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  sw.style.color = lum > 150 ? '#111' : '#fff';
+  $('c-swlabel').style.color = lum > 150 ? 'rgba(0,0,0,.6)' : 'rgba(255,255,255,.7)';
+  T('c-hexbig', hex);
+  if (src !== 'c-hex') $('c-hex').value = hex;
+  T('c-hsl', `${f(h,1)}°, ${f(s,1)}%, ${f(l,1)}%`);
+  T('c-hsv', `${f(hv,1)}°, ${f(sv,1)}%, ${f(vv,1)}%`);
+  T('c-float', [r,g,b].map(x => (x/255).toFixed(3)).join('  '));
+  T('c-pct', [r,g,b].map(x => f(x/255*100,1)).join(' · '));
+  $('c-r-range').style.setProperty('--track', `linear-gradient(90deg, rgb(0,${g},${b}), rgb(255,${g},${b}))`);
+  $('c-g-range').style.setProperty('--track', `linear-gradient(90deg, rgb(${r},0,${b}), rgb(${r},255,${b}))`);
+  $('c-b-range').style.setProperty('--track', `linear-gradient(90deg, rgb(${r},${g},0), rgb(${r},${g},255))`);
+}
+$('c-hex').addEventListener('input', e => {
+  const m = e.target.value.trim().replace(/^#/, '').match(/^([0-9a-f]{6}|[0-9a-f]{3})$/i);
+  if (!m) return;
+  let h = m[1]; if (h.length === 3) h = h.split('').map(c => c + c).join('');
+  S.r = String(parseInt(h.slice(0,2),16)); S.g = String(parseInt(h.slice(2,4),16)); S.b = String(parseInt(h.slice(4,6),16));
+  syncBound('c-hex'); save(); renderColor('c-hex');
+});
+
+/* ---------- Баланс белого ---------- */
+function renderWB(){
+  const k1 = num('k1'), k2 = num('k2');
+  if (!ok(k1, k2) || k1 <= 0 || k2 <= 0) { showErr('w-err1', 'Введи температуры обоих источников в кельвинах.'); }
+  else {
+    showErr('w-err1');
+    const m1 = 1e6 / k1, m2 = 1e6 / k2, mc = (m1 + m2) / 2, kc = 1e6 / mc;
+    H('w-mid', big(f(kc, 0), 'K'));
+    const side = (k, m) => {
+      const dm = m - mc;
+      if (Math.abs(dm) < 0.05) return `${f(k,0)}K совпадает с камерой`;
+      return dm > 0 ? `${f(k,0)}K будет <span class="warm">теплее</span> на ${f(dm,1)} M`
+                    : `${f(k,0)}K будет <span class="cool">холоднее</span> на ${f(-dm,1)} M`;
+    };
+    H('w-midsub', `${side(k1, m1)}<br>${side(k2, m2)}`);
+    const strip = $('w-strip');
+    strip.querySelectorAll('.mk').forEach(n => n.remove());
+    const mk = (k, cls, text) => { const d = document.createElement('div'); d.className = 'mk ' + cls; d.style.left = kPos(k) + '%'; d.innerHTML = `<span>${text}</span>`; strip.appendChild(d); };
+    if (Math.abs(k1 - k2) > 1) { mk(k1, '', ''); mk(k2, '', ''); }
+    mk(kc, 'cam', 'камера ' + f(kc,0));
+  }
+
+  const k0 = num('k0'), sh = num('shift'), dir = S.wbDir;
+  T('w-shiftlabel', 'Поставь на камере');
+  if (!ok(k0, sh) || k0 <= 0 || sh < 0) { showErr('w-err2', 'Введи исходный баланс и сдвиг в майредах (0 и больше).'); }
+  else {
+    const m0 = 1e6 / k0;
+    const mr = dir === 'warm' ? m0 - sh : m0 + sh;
+    if (mr <= 0) {
+      showErr('w-err2', `От ${f(k0,0)}K в тёплую сторону можно сдвинуться максимум на ${f(m0 - 1, 0)} майред.`);
+      H('w-shifted', big('—', 'K')); T('w-shiftsub', '');
+    } else {
+      showErr('w-err2');
+      const kr = 1e6 / mr;
+      H('w-shifted', big(f(kr, 0), 'K'));
+      const outOf = kr < 2000 || kr > 11000;
+      H('w-shiftsub', `${f(k0,0)}K → ${f(kr,0)}K, это ${dir === 'warm' ? '<span class="warm">теплее</span>' : '<span class="cool">холоднее</span>'} на ${f(sh,0)} M` + (outOf ? `<br><span class="chip warnchip">вне типичного диапазона камер ≈2000–11 000K</span>` : ''));
+    }
+    const steps = [25, 50, 75, 100, 125, 150, 175, 200, 300];
+    $('w-table').innerHTML = steps.map(s => {
+      const w = m0 - s, c = m0 + s;
+      return `<tr class="${s === sh ? 'hl' : ''}"><td>${s}</td><td class="warm">${w > 0 ? f(1e6 / w, 0) : '—'}</td><td class="cool">${f(1e6 / c, 0)}</td></tr>`;
+    }).join('');
+  }
+}
+
+/* ---------- Свет ---------- */
+function renderLight(){
+  const h = num('lh'), d = num('ld'), mode = S.lmode, refMode = S.lref;
+  $('l-f-angle').hidden = mode !== 'angle';
+  $('l-f-height').hidden = mode !== 'height';
+  if (!ok(h, d) || h <= 0 || d <= 0) { showErr('l-err', 'Рост и расстояние между героями должны быть больше нуля.'); return; }
+  const ref = refMode === 'eyes' ? h * 13 / 14 : h;
+  const a = d / 2;
+  let ang, rise, Hfix;
+  if (mode === 'angle') {
+    ang = num('la');
+    if (!ok(ang) || ang <= 0 || ang >= 90) { showErr('l-err', 'Угол должен быть больше 0° и меньше 90°.'); return; }
+    rise = a * Math.tan(rad(ang)); Hfix = ref + rise;
+    T('l-biglabel', 'Высота прибора от пола');
+    H('l-big', big(f(Hfix, 2), 'м'));
+  } else {
+    Hfix = num('lH');
+    if (!ok(Hfix)) { showErr('l-err', 'Введи высоту прибора от пола.'); return; }
+    rise = Hfix - ref;
+    if (rise <= 0) { showErr('l-err', `Прибор должен висеть выше уровня отсчёта (${f(ref,2)} м).`); return; }
+    ang = deg(Math.atan(rise / a));
+    T('l-biglabel', 'Угол падения на героя');
+    H('l-big', big(f(ang, 1), '°'));
+  }
+  showErr('l-err');
+  const dist = Math.sqrt(a * a + rise * rise);
+  T('l-sub', mode === 'angle' ? `Под углом ${f(ang,1)}° к каждому герою` : `При высоте прибора ${f(Hfix,2)} м`);
+  T('l-dist', f(dist, 2) + ' м');
+  T('l-rise', f(rise, 2) + ' м');
+  T('l-ref', f(ref, 2) + ' м' + (refMode === 'eyes' ? ' (глаза)' : ' (макушка)'));
+  drawLight(h, d, ref, Hfix, ang);
+}
+function drawLight(h, d, ref, Hfix, ang){
+  const W = 340, floor = 190, top = 26;
+  const sc = Math.min(270 / d, (floor - top) / Math.max(Hfix, h));
+  const cx = W / 2, x1 = cx - d / 2 * sc, x2 = cx + d / 2 * sc;
+  const y = v => floor - v * sc;
+  const headR = Math.max(4, h * sc * 0.065);
+  const person = x => `<line x1="${x}" y1="${floor}" x2="${x}" y2="${y(h) + headR * 2}" stroke="#8f8b85" stroke-width="${Math.max(3, headR * 1.1)}" stroke-linecap="round"/><circle cx="${x}" cy="${y(h) + headR}" r="${headR}" fill="#8f8b85"/>`;
+  const fy = y(Hfix), ry = y(ref);
+  const ar = Math.min(34, (x2 - x1) / 4);
+  const arc = `M ${x1 + ar} ${ry} A ${ar} ${ar} 0 0 0 ${x1 + ar * Math.cos(rad(ang))} ${ry - ar * Math.sin(rad(ang))}`;
+  $('l-svg').innerHTML = `
+    <defs><radialGradient id="glow"><stop offset="0" stop-color="#ffae52" stop-opacity=".55"/><stop offset="1" stop-color="#ffae52" stop-opacity="0"/></radialGradient></defs>
+    <line x1="10" y1="${floor}" x2="${W - 10}" y2="${floor}" stroke="#2c2d32" stroke-width="2"/>
+    <line x1="${x1}" y1="${ry}" x2="${x2}" y2="${ry}" stroke="#4a4b50" stroke-dasharray="3 4"/>
+    <line x1="${cx}" y1="${fy}" x2="${cx}" y2="${floor}" stroke="#3a3b40" stroke-dasharray="2 4"/>
+    ${person(x1)}${person(x2)}
+    <line x1="${x1}" y1="${ry}" x2="${cx}" y2="${fy}" stroke="#ffae52" stroke-width="1.5"/>
+    <line x1="${x2}" y1="${ry}" x2="${cx}" y2="${fy}" stroke="#ffae52" stroke-width="1.5"/>
+    <path d="${arc}" fill="none" stroke="#ffae52" stroke-width="1.2"/>
+    <text x="${x1 + ar + 6}" y="${ry - 6}" fill="#ffae52" font-size="12" font-family="Golos Text, sans-serif">${f(ang,1)}°</text>
+    <circle cx="${cx}" cy="${fy}" r="26" fill="url(#glow)"/>
+    <rect x="${cx - 11}" y="${fy - 7}" width="22" height="12" rx="2" fill="#ffae52"/>
+    <text x="${cx + 18}" y="${Math.max(14, fy - 10)}" fill="#efeae2" font-size="12" font-family="Golos Text, sans-serif">${f(Hfix,2)} м</text>
+    <text x="${cx}" y="${floor + 15}" fill="#8f8b85" font-size="11" text-anchor="middle" font-family="Golos Text, sans-serif">${f(d,2)} м между героями</text>`;
+}
+
+/* ---------- Долли-зум ---------- */
+function renderDolly(){
+  const mode = S.dmode;
+  $('d-f-D2').hidden = mode !== 'focal';
+  $('d-f-F2').hidden = mode !== 'dist';
+  $('d-sw').disabled = S.sensor !== 'custom';
+  T('d-swnote', S.sensor === 'custom' && S.swNote ? 'Из базы камер: ' + S.swNote : '');
+  const F1 = num('F1'), D1 = num('D1'), B = num('bg'), s = num('sw');
+  let F2, D2;
+  if (mode === 'focal') { D2 = num('D2'); F2 = F1 * D2 / D1; }
+  else { F2 = num('F2'); D2 = D1 * F2 / F1; }
+  if (!ok(F1, D1, F2, D2, B, s) || F1 <= 0 || D1 <= 0 || F2 <= 0 || D2 <= 0 || B < 0 || s <= 0) {
+    showErr('d-err', 'Все значения должны быть больше нуля (до фона можно 0).'); return;
+  }
+  showErr('d-err');
+  if (mode === 'focal') { T('d-biglabel', 'Конечный фокус F2'); H('d-big', big(f(F2, 1), 'мм')); T('d-sub', `Камера ${D2 > D1 ? 'отъезжает' : 'наезжает'}: ${f(D1,2)} → ${f(D2,2)} м, зум ${f(F1,1)} → ${f(F2,1)} мм`); }
+  else { T('d-biglabel', 'Конечная дистанция D2'); H('d-big', big(f(D2, 2), 'м')); T('d-sub', `Зум ${f(F1,1)} → ${f(F2,1)} мм, камера ${D2 > D1 ? 'отъезжает' : 'наезжает'} на ${f(Math.abs(D2 - D1), 2)} м`); }
+  const w = s * D1 / F1;
+  const wb1 = s * (D1 + B) / F1, wb2 = s * (D2 + B) / F2;
+  const k = wb1 / wb2;
+  T('d-w', `${f(w, 2)} м, не меняется`);
+  T('d-wb', `${f(wb1, 2)} → ${f(wb2, 2)} м`);
+  T('d-scale', B === 0 ? 'фон в плоскости объекта' : (k >= 1 ? `увеличится в ${f(k, 2)} раза` : `уменьшится в ${f(1 / k, 2)} раза`));
+  const fov = F => deg(2 * Math.atan(s / (2 * F)));
+  T('d-fov', `${f(fov(F1), 1)}° → ${f(fov(F2), 1)}°`);
+}
+
+/* ---------- Карта ---------- */
+function fmtTime(min){
+  if (!Number.isFinite(min)) return '—';
+  const m = Math.floor(min), h = Math.floor(m / 60), r = m % 60;
+  return h ? `${h} ч ${r} мин` : `${r} мин`;
+}
+function renderCard(){
+  T('m-brunit', S.brUnit === 'mbyte' ? 'МБ/с' : 'Мбит/с');
+  const br = num('br'), th = num('th') || 0, tm = num('tm') || 0, cams = num('cams');
+  const mbit = S.brUnit === 'mbyte' ? br * 8 : br;
+  const sec = th * 3600 + tm * 60;
+  if (!ok(mbit, cams) || mbit <= 0 || cams < 1 || sec <= 0) { showErr('m-err', 'Нужны битрейт, хотя бы одна камера и время записи больше нуля.'); return; }
+  showErr('m-err');
+  const gb = mbit * sec / 8000;
+  const gib = gb * 1e9 / Math.pow(2, 30);
+  H('m-big', gb >= 1000 ? big(f(gb / 1000, 2), 'ТБ') : big(f(gb, 1), 'ГБ'));
+  T('m-sub', `${f(gib, 1)} ГиБ · ${f(mbit / 8, 1)} МБ/с` + (cams > 1 ? ` · на ${f(cams,0)} камер всего ${gb * cams >= 1000 ? f(gb * cams / 1000, 2) + ' ТБ' : f(gb * cams, 1) + ' ГБ'}` : ''));
+  const sizes = [64, 128, 256, 512, 1000, 2000];
+  const firstFit = sizes.find(c => c >= gb);
+  $('m-cards').innerHTML = sizes.map(c => {
+    const min = c * 8000 / mbit / 60;
+    const cls = c === firstFit ? 'ok' : (c < gb ? 'no' : '');
+    return `<div class="card ${cls}"><b>${c >= 1000 ? c / 1000 + ' ТБ' : c + ' ГБ'}</b><span>${fmtTime(min)}</span>${c === firstFit ? '<span class="fit">хватит</span>' : ''}</div>`;
+  }).join('');
+}
+
+/* ---------- Конус ---------- */
+function renderCone(){
+  const full = S.cmode === 'full';
+  $('k-in-full').hidden = !full;
+  $('k-in-trunc').hidden = full;
+  let k, R1, R2 = 0, rows;
+  if (full) {
+    const h = num('cH'), D = num('cD');
+    if (!ok(h, D) || h <= 0 || D <= 0) { showErr('k-err', 'Высота и диаметр должны быть больше нуля.'); return; }
+    k = Math.sqrt(1 + Math.pow(2 * h / D, 2)); R1 = k * D / 2;
+    var theta = 360 / k;
+    rows = [
+      ['Радиус дуги (образующая)', f(R1, 2)],
+      ['Длина дуги', f(Math.PI * D, 2)],
+      ['Хорда между краями дуги', f(2 * R1 * Math.sin(rad(theta / 2)), 2)]
+    ];
+  } else {
+    const D1 = num('tD1'), D2 = num('tD2'), h = num('tH');
+    if (!ok(D1, D2, h) || D1 <= 0 || D2 <= 0 || h <= 0) { showErr('k-err', 'Все размеры должны быть больше нуля.'); return; }
+    if (D1 <= D2) { showErr('k-err', 'Больший диаметр D1 должен быть больше D2.'); return; }
+    k = Math.sqrt(1 + Math.pow(2 * h / (D1 - D2), 2)); R1 = k * D1 / 2; R2 = k * D2 / 2;
+    var theta = 360 / k;
+    rows = [
+      ['Радиус внешней дуги R1', f(R1, 2)],
+      ['Радиус внутренней дуги R2', f(R2, 2)],
+      ['Ширина полосы (образующая)', f(R1 - R2, 2)],
+      ['Длина внешней дуги', f(Math.PI * D1, 2)],
+      ['Длина внутренней дуги', f(Math.PI * D2, 2)],
+      ['Хорда внешней дуги', f(2 * R1 * Math.sin(rad(theta / 2)), 2)]
+    ];
+  }
+  showErr('k-err');
+  H('k-big', big(f(theta, 1), '°'));
+  T('k-sub', `Коэффициент k = ${f(k, 3)}, угол = 360° / k`);
+  $('k-rows').innerHTML = rows.map(([a, b]) => `<div class="row"><span>${a}</span><span>${b}</span></div>`).join('');
+  drawCone(R1, R2, theta);
+}
+function drawCone(R1, R2, theta){
+  const a0 = 90 - theta / 2, a1 = 90 + theta / 2;
+  const P = (a, r) => [r * Math.cos(rad(a)), r * Math.sin(rad(a))];
+  const pts = [[0, 0]];
+  for (let a = a0; a <= a1 + 0.001; a += 2) { pts.push(P(a, R1)); if (R2) pts.push(P(a, R2)); }
+  pts.push(P(a1, R1));
+  const xs = pts.map(p => p[0]), ys = pts.map(p => p[1]);
+  const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
+  const W = 320, Hh = 220, pad = 16;
+  const sc = Math.min((W - 2 * pad) / (maxX - minX), (Hh - 2 * pad) / (maxY - minY));
+  const ox = pad + ((W - 2 * pad) - (maxX - minX) * sc) / 2 - minX * sc;
+  const oy = pad + ((Hh - 2 * pad) - (maxY - minY) * sc) / 2 - minY * sc;
+  const X = p => (ox + p[0] * sc).toFixed(2), Y = p => (oy + p[1] * sc).toFixed(2);
+  const large = theta > 180 ? 1 : 0;
+  const s1 = P(a0, R1), e1 = P(a1, R1);
+  let d;
+  if (R2) {
+    const s2 = P(a0, R2), e2 = P(a1, R2);
+    d = `M ${X(s1)} ${Y(s1)} A ${R1 * sc} ${R1 * sc} 0 ${large} 1 ${X(e1)} ${Y(e1)} L ${X(e2)} ${Y(e2)} A ${R2 * sc} ${R2 * sc} 0 ${large} 0 ${X(s2)} ${Y(s2)} Z`;
+  } else {
+    d = `M ${X([0,0])} ${Y([0,0])} L ${X(s1)} ${Y(s1)} A ${R1 * sc} ${R1 * sc} 0 ${large} 1 ${X(e1)} ${Y(e1)} Z`;
+  }
+  const c = [0, 0];
+  $('k-svg').innerHTML = `
+    <path d="${d}" fill="rgba(255,174,82,.12)" stroke="#ffae52" stroke-width="1.5" stroke-linejoin="round"/>
+    <line x1="${X(c)}" y1="${Y(c)}" x2="${X(s1)}" y2="${Y(s1)}" stroke="#8f8b85" stroke-dasharray="3 4"/>
+    <line x1="${X(c)}" y1="${Y(c)}" x2="${X(e1)}" y2="${Y(e1)}" stroke="#8f8b85" stroke-dasharray="3 4"/>
+    <circle cx="${X(c)}" cy="${Y(c)}" r="2.5" fill="#efeae2"/>
+    <text x="${X(c)}" y="${+Y(c) - 8}" fill="#efeae2" font-size="12" text-anchor="middle" font-family="Golos Text, sans-serif">${f(theta,1)}°</text>`;
+}
+
+/* ---------- Золото ---------- */
+function renderGolden(){
+  const L = num('gL');
+  if (ok(L) && L > 0) {
+    const bigP = L / PHI, small = L - bigP;
+    T('g-big', f(bigP, 1)); T('g-small', f(small, 1));
+    T('g-lines', `${f(small, 1)} и ${f(bigP, 1)}`);
+    const sa = $('g-sa'), sb = $('g-sb');
+    sa.style.width = '61.8%'; sb.style.width = '38.2%';
+    sa.textContent = f(bigP, 0); sb.textContent = f(small, 0);
+  }
+  const a = num('ga');
+  if (!ok(a) || a <= 0) { showErr('g-err', 'Отрезок должен быть больше нуля.'); return; }
+  showErr('g-err');
+  T('g-up', `${f(a * PHI, 2)} (вместе ${f(a * PHI + a, 2)})`);
+  T('g-down', `${f(a / PHI, 2)} (вместе ${f(a / PHI + a, 2)})`);
+}
+
+/* ---------- База камер ---------- */
+/* M(название, ширина мм, высота мм, рассчитано?) — рассчитанные режимы получены из шага пикселя или ширины сенсора */
+const M = (n, w, h, calc) => ({ n, w, h, d: Math.hypot(w, h), calc: !!calc });
+const FF_D = Math.hypot(36, 24);
+const SRC = {
+  xtreme: ['arri.com · ALEXA 35 Xtreme', 'https://www.arri.com/en/cine-systems/cine-cameras/alexa-35-xtreme'],
+  a35: ['arri.com · ALEXA 35', 'https://www.arri.com/en/camera-systems/cameras/legacy-camera-systems/alexa-35'],
+  a35pdf: ['ALEXA 35 brochure (PDF)', 'https://www.arri.com/resource/blob/274722/c1f2dc31034e821eb74e5bb8154c6fa9/alexa-35-brochure-data.pdf'],
+  minilf: ['arri.com · ALEXA Mini LF', 'https://www.arri.com/en/camera-systems/cameras/alexa-mini-lf'],
+  minilfpdf: ['ALEXA Mini LF data sheet (PDF)', 'https://www.arri.com/resource/blob/261224/0654da7b1dda042b23b1b6c254c1f8c3/alexa-mini-lf-flyer-technical-data-sheet-data.pdf'],
+  a265: ['arri.com · ALEXA 265', 'https://www.arri.com/en/cine-systems/cine-cameras/alexa-265'],
+  mini: ['arri.com · ALEXA Mini', 'https://www.arri.com/en/camera-systems/cameras/legacy-camera-systems/alexa-mini'],
+  vrx: ['red.com · V-RAPTOR', 'https://www.red.com/v-raptor'],
+  vrxl: ['docs.red.com · V-RAPTOR XL [X]', 'https://docs.red.com/955-0227/955-0227_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20XL%20%5BX%5D%208K%20VV%20Operation%20Guide%20HTML/Content/B_TechSpecs/Specs_V-RAPTOR_XL%20[X].htm'],
+  vrxe: ['docs.red.com · V-RAPTOR XE', 'https://docs.red.com/955-0233/955-0233_V2.1%20Rev-A%20RED%20PS,%20V-RAPTOR%20XE%20Operation%20Guide%20HTML/Content/B_TechSpecs/Specs_V-RAPTOR%20XE.htm'],
+  kx: ['red.com · KOMODO-X', 'https://www.red.com/komodo-brain-parent'],
+  kxdoc: ['docs.red.com · KOMODO-X formats', 'https://docs.red.com/955-0219/955-0219_V1.0%20Rev-A%20RED%20PS,%20KOMODO-X%20Operation%20Guide/Content/4_Menus/02_ProjSet/Format/All_Formats.htm'],
+  k: ['docs.red.com · KOMODO 6K', 'https://docs.red.com/955-0190_v1.3/955-0190_v1.3_REV-1.1_1_RED_PS_KOMODO_Operation_Guide/Content/A_TechSpecs/Specs_KOMODO_6K.htm'],
+  v2: ['pro.sony · VENICE 2', 'https://pro.sony/en_AU/products/digital-cinema-cameras/venice2'],
+  v2pdf: ['Sony VENICE 2 Recording Formats (PDF)', 'https://77snszqv.media.zestyio.com/Sony_VENICE2_RecordingFormats.pdf'],
+  burano: ['Sony Alpha Universe · BURANO', 'https://alphauniverse-mea.com/burano'],
+  burano2: ['AbelCine · BURANO', 'https://www.abelcine.com/rent/audio/sony-cinealta-burano-8k-camera'],
+  fx6: ['Wikipedia · Sony FX6', 'https://en.wikipedia.org/wiki/Sony_FX6'],
+  ucine: ['blackmagicdesign.com · URSA Cine', 'https://www.blackmagicdesign.com/products/blackmagicursacine/techspecs'],
+  pyxis: ['blackmagicdesign.com · PYXIS', 'https://www.blackmagicdesign.com/products/blackmagicpyxis/techspecs'],
+  bcc6k: ['blackmagicdesign.com · Cinema Camera 6K', 'https://www.blackmagicdesign.com/products/blackmagiccinemacamera/techspecs'],
+  pocket: ['blackmagicdesign.com · Pocket Cinema Camera', 'https://www.blackmagicdesign.com/products/blackmagicpocketcinemacamera/techspecs']
+};
+const CAMS = [
+  { id:'alexa35x', brand:'ARRI', model:'ALEXA 35 Xtreme', year:2025, fmt:'S35', gs:false,
+    sensor:'ARRI ALEV 4 CMOS, Bayer', res:'4608 × 3164', pitch:'6,075 мкм', fps:660,
+    specs:[['Динамический диапазон','17 стопов (до 330 fps); 11 стопов в Sensor Overdrive'],['Чувствительность','EI 160–6400'],['Кадровая частота','0,75–660 fps. 4.6K Open Gate: ARRIRAW до 80, ARRICORE до 165. 2K/HD S16: до 660 (ARRICORE, Sensor Overdrive)'],['Затвор','Rolling, 5–356°'],['Кодеки','ARRIRAW, ARRICORE, Apple ProRes 4444 XQ / 4444 / 422 HQ'],['Носители','Codex Compact Drive'],['Байонет','LPL (LBUS), PL, EF'],['ND','Встроенные: Clear, 0.6, 1.2, 1.8'],['Вес','≈2,9 кг (корпус, LPL)'],['Питание','20,5–33,6 В, ≈90 Вт'],['Лицензии','Base: только 16:9 до 60 fps. Premium: все режимы, до 660 fps, ARRIRAW']],
+    modes:[M('4.6K 3:2 Open Gate',28.00,19.20),M('4.6K 16:9',28.00,15.70),M('4K 16:9',24.88,14.00),M('3.8K 16:9',23.3,13.1),M('3.8K 2.39:1',23.3,9.8),M('3.3K 6:5',20.22,16.95),M('2K 16:9 S16',12.4,7.0)],
+    src:['xtreme'] },
+  { id:'alexa35', brand:'ARRI', model:'ALEXA 35', year:2022, fmt:'S35', gs:false, legacy:'На сайте ARRI в разделе legacy, обновляется до Xtreme',
+    sensor:'ARRI ALEV 4 CMOS, Bayer', res:'4608 × 3164', pitch:'6,075 мкм', fps:120,
+    specs:[['Динамический диапазон','17 стопов'],['Чувствительность','EI 160–6400'],['Кадровая частота','0,75–120 fps. 4.6K Open Gate: ARRIRAW до 75 (диск 2 ТБ), ProRes до 60. 4K 16:9: ARRIRAW до 120'],['Затвор','Rolling, 5–356°'],['Кодеки','ARRIRAW, Apple ProRes'],['Носители','Codex Compact Drive 1 / 2 ТБ'],['Байонет','LPL (LBUS), PL, EF'],['ND','Встроенные: Clear, 0.6, 1.2, 1.8'],['Вес','2,9 кг (корпус, LPL)'],['Потребление','85–135 Вт при записи']],
+    modes:[M('4.6K 3:2 Open Gate',28.00,19.20),M('4.6K 16:9',28.00,15.70),M('4K 16:9',24.90,14.00),M('4K 2:1',24.90,12.40),M('3.3K 6:5',20.22,16.95),M('3K 1:1',18.70,18.70),M('2K 16:9 S16',12.40,7.00)],
+    src:['a35','a35pdf'] },
+  { id:'minilf', brand:'ARRI', model:'ALEXA Mini LF', year:2019, fmt:'LF', gs:false,
+    sensor:'ARRI ALEV III (A2X) CMOS, Bayer', res:'4448 × 3096', pitch:'8,25 мкм', fps:100,
+    specs:[['Динамический диапазон','14+ стопов'],['Чувствительность','EI 160–3200, нативная 800'],['Кадровая частота','0,75–100 fps (SUP 7). LF Open Gate ARRIRAW до 40'],['Затвор','Rolling, 5–356°'],['Кодеки','ARRIRAW, Apple ProRes'],['Носители','Codex Compact Drive 1 / 2 ТБ'],['Байонет','LPL'],['ND','Встроенные FSND: Clear, 0.6, 1.2, 1.8'],['Вес','≈2,6 кг (корпус, LPL)'],['Питание','11–34 В, ≈65–89 Вт']],
+    modes:[M('LF 3:2 Open Gate',36.70,25.54),M('LF 2.39:1',36.70,15.31),M('4.3K LF 16:9 (ProRes)',35.64,20.05),M('3.8K LF 16:9 UHD',31.68,17.82),M('S35 3.4K 3:2',28.25,18.17),M('S35 2.8K 4:3',23.76,17.82)],
+    src:['minilf','minilfpdf'] },
+  { id:'a265', brand:'ARRI', model:'ALEXA 265', year:2024, fmt:'65', gs:false,
+    sensor:'ARRI A3X Rev.B CMOS, Bayer', res:'6560 × 3100', pitch:'8,25 мкм', fps:60,
+    specs:[['Динамический диапазон','15 стопов'],['Чувствительность','EI 160–6400'],['Кадровая частота','0,75–60 fps. 6.5K Open Gate: 29 / 60 (диск 1 / 2 ТБ)'],['Затвор','Rolling, 5–358°'],['Кодеки','Только ARRIRAW (MXF), поддержка Codex HDE'],['Носители','Codex Compact Drive 1 / 2 ТБ'],['Байонет','LPL (LBUS), PL, EF, Leitz M'],['ND','Сменные кассеты перед сенсором: Clear–ND 2.7 по стопу'],['Вес','≈3,3 кг (корпус, LPL)'],['Питание','20,5–33,6 В, ≈75 Вт']],
+    modes:[M('6.5K 2.12:1 Open Gate',54.12,25.58),M('5.1K 1.65:1',42.24,25.58,true),M('4.5K LF 3:2',36.70,25.54,true)],
+    src:['a265'] },
+  { id:'mini', brand:'ARRI', model:'ALEXA Mini', year:2015, fmt:'S35', gs:false, legacy:'На сайте ARRI в разделе legacy',
+    sensor:'ARRI ALEV III CMOS, Bayer', res:'3424 × 2202', pitch:'8,25 мкм', fps:200,
+    specs:[['Динамический диапазон','14+ стопов'],['Чувствительность','EI 160–3200'],['Кадровая частота','0,75–200 fps'],['Затвор','Rolling, 5–356°'],['Кодеки','ARRIRAW (по лицензии), Apple ProRes'],['Носители','CFast 2.0'],['Байонет','PL (титановый), LPL, EF, B4, Leitz M'],['ND','Встроенные FSND до 2.1'],['Вес','≈2,3 кг (корпус, PL)'],['Питание','10,5–34 В, 43–84 Вт']],
+    modes:[M('3.4K 3:2 Open Gate',28.25,18.17),M('3.2K 16:9',26.40,14.85,true),M('2.8K 4:3',23.76,17.82,true),M('HD 16:9',23.76,13.37,true)],
+    src:['mini'] },
+
+  { id:'vrx', brand:'RED', model:'V-RAPTOR [X] 8K VV', year:2023, fmt:'VV', gs:true,
+    sensor:'V-RAPTOR [X] 8K VV, 35,4 Мп, глобальный затвор', res:'8192 × 4320', pitch:'5 мкм', fps:600,
+    specs:[['Динамический диапазон','17+ стопов (Extended Highlights)'],['Кадровая частота','8K 17:9 до 120, 8K 2.4:1 до 150, 4K 17:9 до 240, 2K 17:9 до 480, 2K 2.4:1 до 600'],['Затвор','Глобальный'],['Кодеки','REDCODE RAW (HQ/MQ/LQ/ELQ), Apple ProRes до 4K 120p'],['Носители','CFexpress Type B, до 800 МБ/с'],['Байонет','RF с фиксацией (есть версия Nikon Z)'],['ND','Нет'],['Вес','≈1,83 кг (4,03 lb, корпус)'],['Питание','11–17 В, Micro V-Lock'],['Автофокус','Фазовый, с распознаванием лиц']],
+    modes:[M('8K 17:9 VV',40.96,21.60),M('8K 2.4:1',40.96,17.28),M('8K 16:9',38.40,21.60),M('8K 6:5 2x ана',25.92,21.60),M('6K 17:9',30.72,16.20,true),M('4K 17:9',20.48,10.80,true)],
+    src:['vrx'] },
+  { id:'vrxl', brand:'RED', model:'V-RAPTOR XL [X] 8K VV', year:2023, fmt:'VV', gs:true,
+    sensor:'V-RAPTOR [X] 8K VV, 35,4 Мп, глобальный затвор', res:'8192 × 4320', pitch:'5 мкм', fps:600,
+    specs:[['Динамический диапазон','17+ стопов'],['Кадровая частота','8K 17:9 до 120, 4K 17:9 до 240, 2K 2.4:1 до 600'],['Затвор','Глобальный'],['Кодеки','REDCODE RAW, Apple ProRes до 4K 120p'],['Носители','CFexpress Type B'],['Байонет','Сменный: PL (в комплекте), EF с фиксацией'],['ND','Электронный, 2–7 стопов, шаг 1/3, 1/4 или 1 стоп'],['Вес','≈3,62 кг (7,99 lb, PL, V-Lock)'],['Питание','19,5–34 В, V-Lock или Gold Mount 14/26 В']],
+    modes:[M('8K 17:9 VV',40.96,21.60),M('8K 2.4:1',40.96,17.28),M('8K 16:9',38.40,21.60),M('6K 17:9',30.72,16.20,true),M('4K 17:9',20.48,10.80,true)],
+    src:['vrxl'] },
+  { id:'vrxe', brand:'RED', model:'V-RAPTOR XE 8K VV', year:2025, fmt:'VV', gs:true,
+    sensor:'V-RAPTOR XE 8K VV, 35,4 Мп, глобальный затвор', res:'8192 × 4320', pitch:'5 мкм', fps:300,
+    specs:[['Динамический диапазон','17+ стопов'],['Кадровая частота','8K 17:9 до 60, 6K 17:9 до 80, 4K 17:9 до 120, 2K 17:9 до 240, 2K 2.4:1 до 300'],['Затвор','Глобальный'],['Кодеки','REDCODE RAW, Apple ProRes до 4K 120p'],['Носители','CFexpress Type B, до 800 МБ/с'],['Байонет','Nikon Z с фиксацией'],['ND','Нет'],['Вес','≈1,83 кг (4,03 lb, корпус)'],['Питание','11–17 В, Micro V-Lock']],
+    modes:[M('8K 17:9 VV',40.96,21.60),M('8K 2.4:1',40.96,17.28),M('8K 16:9',38.40,21.60),M('6K 17:9',30.72,16.20,true),M('4K 17:9',20.48,10.80,true)],
+    src:['vrxe'] },
+  { id:'kx', brand:'RED', model:'KOMODO-X 6K', year:2023, fmt:'S35', gs:true,
+    sensor:'KOMODO-X 19,9 Мп S35, глобальный затвор', res:'6144 × 3240', pitch:'4,4 мкм', fps:240,
+    specs:[['Динамический диапазон','16,5+ стопов'],['Кадровая частота','6K 17:9 до 80, 6K 2.4:1 до 100, 5K до 96, 4K до 120, 2K до 240'],['Затвор','Глобальный'],['Кодеки','REDCODE RAW, Apple ProRes'],['Носители','CFexpress Type B, до 560 МБ/с'],['Байонет','RF с фиксацией (есть версия Nikon Z)'],['ND','Нет'],['Вес','≈1,19 кг (2,62 lb, корпус)'],['Питание','11–17 В, Micro V-Lock']],
+    modes:[M('6K 17:9',27.03,14.26),M('6K 2.4:1',27.03,11.40),M('6K 16:9',25.34,14.26),M('6K 4:3 2x ана',19.01,14.26),M('4K 17:9',18.02,9.50,true)],
+    src:['kx','kxdoc'] },
+  { id:'komodo', brand:'RED', model:'KOMODO 6K', year:2020, fmt:'S35', gs:true,
+    sensor:'KOMODO 19,9 Мп S35, глобальный затвор', res:'6144 × 3240', pitch:'4,4 мкм', fps:120,
+    specs:[['Динамический диапазон','16+ стопов'],['Кадровая частота','6K 17:9 до 40, 6K 2.4:1 до 50, 5K до 48, 4K до 60, 2K до 120'],['Затвор','Глобальный'],['Кодеки','REDCODE RAW, ProRes 422 HQ / 422 (4K до 60, 2K до 120)'],['Носители','CFast 2.0, до 280 МБ/с'],['Байонет','RF'],['ND','Нет'],['Вес','≈0,95 кг (2,10 lb, корпус)'],['Питание','7–17 В, два аккумулятора Canon BP-900']],
+    modes:[M('6K 17:9',27.03,14.26),M('6K 2.4:1',27.03,11.40),M('6K 16:9',25.34,14.26),M('4K 17:9',18.02,9.50,true)],
+    src:['k'] },
+
+  { id:'v2-8k', brand:'Sony', model:'VENICE 2 (8K)', year:2021, fmt:'FF', gs:false,
+    sensor:'Полнокадровый CMOS 8.6K, 50 Мп', res:'8640 × 5760', pitch:'≈4,2 мкм', fps:120,
+    specs:[['Динамический диапазон','16 стопов'],['Базовые ISO','800 и 3200'],['Кадровая частота','8.6K 3:2 до 30, 8.6K 17:9 до 48, 8.2K 17:9 до 60, 8.2K 2.39:1 до 72, S35 5.8K 17:9 до 90, 5.5K 2.39:1 до 120'],['Затвор','Rolling'],['Кодеки','X-OCN XT / ST / LT (16 бит), Apple ProRes 4444 и 422 HQ в 4K'],['Носители','AXS Memory'],['Байонет','PL, E-mount (рычажный)'],['ND','Механические, 8 ступеней: 0.3–2.4'],['Вес','≈4,3 кг (корпус)'],['Потребление','≈76 Вт (8.6K, X-OCN XT, 24 fps)']],
+    modes:[M('8.6K 3:2 FF',35.9,24.0),M('8.6K 17:9 FF',35.9,19.0),M('8.2K 17:9',34.1,18.0),M('8.2K 2.39:1',34.1,14.3),M('7.6K 16:9',31.9,18.0),M('5.8K 4:3 S35',24.1,17.8),M('5.8K 17:9 S35',24.1,12.7)],
+    src:['v2','v2pdf'] },
+  { id:'v2-6k', brand:'Sony', model:'VENICE 2 (6K)', year:2021, fmt:'FF', gs:false,
+    sensor:'Полнокадровый CMOS 6K, сенсор оригинальной VENICE', res:'6048 × 4032', pitch:'≈5,9 мкм', fps:120,
+    specs:[['Динамический диапазон','15+ стопов'],['Базовые ISO','500 и 2500'],['Кадровая частота','6K 3:2 до 60, 6K 17:9 до 72, 6K 2.39:1 до 90, 4K 2.39:1 до 120'],['Затвор','Rolling'],['Кодеки','X-OCN XT / ST / LT, Apple ProRes 4444 и 422 HQ в 4K'],['Носители','AXS Memory'],['Байонет','PL, E-mount (рычажный)'],['ND','Механические, 8 ступеней: 0.3–2.4'],['Потребление','≈73 Вт (6K 3:2, X-OCN XT, 24 fps)']],
+    modes:[M('6K 3:2',35.9,24.0),M('6K 1.85:1',36.0,19.4),M('6K 17:9',36.0,19.0),M('6K 2.39:1',35.9,15.0),M('5.7K 16:9',33.7,19.0),M('4K 6:5 ана',24.3,20.4),M('4K 17:9 S35',24.3,12.8)],
+    src:['v2'] },
+  { id:'burano', brand:'Sony', model:'BURANO', year:2023, fmt:'FF', gs:false,
+    sensor:'Полнокадровый Exmor RS CMOS, 41,9 Мп', res:'8632 × 4856', pitch:'≈4,2 мкм', fps:240,
+    specs:[['Динамический диапазон','16 стопов'],['Базовые ISO','800 и 3200'],['Кадровая частота','FF 8.6K до 30, FF-кроп 6K до 60, S35 5.8K до 60, S35-кроп 4K до 120. С v2.0: FF-кроп 3.8K до 120, S35 1.9K до 240'],['Затвор','Rolling, 5,6–360°'],['Кодеки','X-OCN LT, XAVC H (H.265), XAVC-I, XAVC-L'],['Носители','2 × CFexpress Type B, SD'],['Байонет','PL (съёмный адаптер), E-mount (рычажный)'],['ND','Электронный переменный 0.6–2.1'],['Стабилизация','Сдвиг сенсора, 5 осей (с PL и E)'],['Вес','≈2,4 кг корпус, ≈2,9 кг с PL-адаптером'],['Потребление','≈50 Вт, до 66 Вт']],
+    modes:[M('FF 8.6K 16:9',35.9,20.2,true),M('S35 5.8K 16:9',24.1,13.6,true)],
+    src:['burano','burano2'] },
+  { id:'fx6', brand:'Sony', model:'FX6', year:2020, fmt:'FF', gs:false,
+    sensor:'Полнокадровый Exmor R CMOS, 10,2 Мп эффективных', res:'4K (3840 × 2160 / 4096 × 2160)', pitch:'—', fps:240,
+    specs:[['Динамический диапазон','15+ стопов'],['Базовые ISO','800 и 12 800 (расширение до 409 600)'],['Кадровая частота','DCI 4K до 60, UHD до 120, HD до 240'],['Затвор','Rolling'],['Кодеки','XAVC-I, XAVC-L; 16-бит RAW по SDI на внешний рекордер'],['Носители','CFexpress Type A, SDXC'],['Байонет','E-mount'],['ND','Электронный переменный 1/4–1/128'],['Вес','≈0,89 кг (корпус)'],['Питание','19,5 В, аккумуляторы BP-U']],
+    modes:[M('FF 4K 16:9',35.6,20.0,true)],
+    src:['fx6'] },
+
+  { id:'ucine12', brand:'Blackmagic', model:'URSA Cine 12K LF', year:2024, fmt:'FF', gs:false,
+    sensor:'RGBW 12K, крупноформатный', res:'12 288 × 8040', pitch:'2,9 мкм', fps:224,
+    specs:[['Динамический диапазон','16 стопов'],['Кадровая частота','12K 3:2 OG до 80, 12K 17:9 до 100, 12K 2.4:1 до 120, 9K S35 до 100, 8K/4K 3:2 OG до 144, 8K/4K 2.4:1 до 224'],['Затвор','Rolling'],['Кодеки','Blackmagic RAW (3:1–18:1, Q0–Q5), прокси H.264'],['Носители','Blackmagic Media Module 8 ТБ (версия Body: 2 × CFexpress Type B)'],['Байонет','PL, LPL, EF (опционально B4)'],['ND','Встроенные IR ND: Clear, 2, 4, 6 стопов'],['Питание','Lemo 8-pin, 12–34 В']],
+    modes:[M('12K 3:2 Open Gate',35.64,23.32),M('12K 17:9',35.64,18.79,true),M('12K 2.4:1',35.64,14.82,true),M('9K 3:2 Super 35',27.28,18.17,true)],
+    src:['ucine'] },
+  { id:'ucine17', brand:'Blackmagic', model:'URSA Cine 17K 65', year:2024, fmt:'65', gs:false,
+    sensor:'RGBW 17K, формат 65 мм', res:'17 520 × 8040', pitch:'2,9 мкм', fps:170,
+    specs:[['Динамический диапазон','16 стопов'],['Кадровая частота','17K 2.2:1 OG до 60, 12K 2.4:1 до 90, 8K 2.2:1 OG до 100, 8K 2.4:1 до 170'],['Затвор','Rolling'],['Кодеки','Blackmagic RAW (3:1–18:1, Q0–Q5), прокси H.264'],['Носители','Blackmagic Media Module 8 ТБ (версия Body: модуль CF)'],['Байонет','PL, LPL (опционально EF, Hasselblad HC)'],['ND','Нет'],['Питание','Lemo 8-pin']],
+    modes:[M('17K 2.2:1 Open Gate',50.81,23.32),M('14K 16:9 (полная высота)',41.48,23.32,true),M('12K 3:2',35.64,23.32,true)],
+    src:['ucine'] },
+  { id:'pyxis12', brand:'Blackmagic', model:'PYXIS 12K', year:2025, fmt:'FF', gs:false,
+    sensor:'RGBW 12K, крупноформатный', res:'12 288 × 8040', pitch:'2,9 мкм', fps:112,
+    specs:[['Динамический диапазон','16 стопов'],['Нативный ISO','800'],['Кадровая частота','12K 2.4:1 до 60, 9K 2.4:1 S35 до 80, 8K/4K 2.4:1 до 112'],['Затвор','Rolling'],['Кодеки','Blackmagic RAW, прокси H.264'],['Носители','2 × CFexpress Type B, USB-C'],['Байонет','L-Mount, EF или PL (разные версии)'],['ND','Нет'],['Питание','12–18 В']],
+    modes:[M('12K 3:2 Open Gate',35.64,23.32),M('12K 2.4:1',35.64,14.82,true),M('9K 3:2 Super 35',27.28,18.17,true)],
+    src:['pyxis'] },
+  { id:'pyxis6', brand:'Blackmagic', model:'PYXIS 6K', year:2024, fmt:'FF', gs:false,
+    sensor:'Полнокадровый 6K с OLPF', res:'6048 × 4032', pitch:'5,94 мкм', fps:120,
+    specs:[['Динамический диапазон','13 стопов'],['Двойной нативный ISO','400 и 3200'],['Кадровая частота','6K 3:2 OG до 36, 6K 2.4:1 и 4K DCI до 60, Super 16 до 100, HD до 120'],['Затвор','Rolling'],['Кодеки','Blackmagic RAW, прокси H.264'],['Носители','2 × CFexpress Type B, USB-C'],['Байонет','L-Mount, EF или PL (разные версии)'],['ND','Нет'],['Питание','11–19,5 В, BP-U']],
+    modes:[M('6K 3:2 Open Gate',36.0,24.0),M('6K 16:9',36.0,20.24,true),M('6K 2.4:1',36.0,15.0,true),M('Super 35 4:3',24.33,18.25,true)],
+    src:['pyxis'] },
+  { id:'bcc6k', brand:'Blackmagic', model:'Cinema Camera 6K', year:2023, fmt:'FF', gs:false,
+    sensor:'Полнокадровый 6K с OLPF', res:'6048 × 4032', pitch:'5,94 мкм', fps:120,
+    specs:[['Динамический диапазон','13 стопов'],['Двойной нативный ISO','400 и 3200'],['Кадровая частота','6K 3:2 OG до 36, 6K 2.4:1 и 4K DCI до 60, Super 16 до 100, HD до 120'],['Затвор','Rolling'],['Кодеки','Blackmagic RAW, прокси H.264'],['Носители','CFexpress Type B, USB-C'],['Байонет','L-Mount'],['ND','Нет'],['Питание','12–20 В, NP-F570']],
+    modes:[M('6K 3:2 Open Gate',36.0,24.0),M('6K 2.4:1',36.0,15.0,true),M('4K DCI (окно)',24.33,12.83,true)],
+    src:['bcc6k'] },
+  { id:'p6kpro', brand:'Blackmagic', model:'Pocket Cinema Camera 6K Pro', year:2021, fmt:'S35', gs:false,
+    sensor:'Super 35 6K HDR', res:'6144 × 3456', pitch:'3,76 мкм', fps:120,
+    specs:[['Динамический диапазон','13 стопов'],['Двойной нативный ISO','400 и 3200'],['Кадровая частота','До 60 fps в полном разрешении, до 120 в кропе'],['Затвор','Rolling'],['Кодеки','Blackmagic RAW 12 бит, Apple ProRes 10 бит'],['Носители','CFast 2.0, SD UHS-II, USB-C'],['Байонет','EF'],['ND','Встроенные IR ND: Clear, 2, 4, 6 стопов'],['Питание','NP-F570']],
+    modes:[M('6K 16:9',23.10,12.99),M('4K DCI (окно)',15.40,8.12,true)],
+    src:['pocket'] },
+  { id:'p4k', brand:'Blackmagic', model:'Pocket Cinema Camera 4K', year:2018, fmt:'MFT', gs:false,
+    sensor:'4/3 HDR', res:'4096 × 2160', pitch:'4,63 мкм', fps:120,
+    specs:[['Динамический диапазон','13 стопов'],['ISO','Двойной нативный, до 25 600'],['Кадровая частота','DCI 4K и UHD до 60, до 120 в кропе'],['Затвор','Rolling'],['Кодеки','Blackmagic RAW 12 бит, Apple ProRes 10 бит'],['Носители','SD UHS-II, CFast 2.0, USB-C'],['Байонет','MFT'],['ND','Нет']],
+    modes:[M('4K DCI',18.96,10.00),M('UHD',17.80,10.00,true)],
+    src:['pocket'] }
+];
+const camById = id => CAMS.find(c => c.id === id);
+
+function renderCameras(){
+  const cam = camById(S.camId);
+  $('cam-listview').hidden = !!cam;
+  $('cam-detail').hidden = !cam;
+  if (!cam) { renderCamList(); return; }
+  renderCamDetail(cam);
+}
+function renderCamList(){
+  const q = String(S.camQ || '').trim().toLowerCase();
+  const list = CAMS.filter(c => (S.camBrand === 'all' || c.brand === S.camBrand) && (!q || (c.brand + ' ' + c.model).toLowerCase().includes(q)));
+  T('cam-lede', `${CAMS.length} моделей. Спецификации с сайтов производителей. Нажми на камеру: режимы сенсора, покрытие объективом и угол обзора.`);
+  $('cam-list').innerHTML = list.length ? list.map(c => {
+    const m = c.modes[0];
+    return `<button class="cam" data-cam="${c.id}" id="cam-${c.id}">
+      <span><span class="br">${c.brand} · ${c.year}</span><br><span class="nm">${c.model}</span></span>
+      <span class="right"><b>${f(c.fps,0)} fps</b>${f(m.w,2)} × ${f(m.h,2)} мм</span>
+      <span class="tags"><span class="tag">${c.fmt}</span><span class="tag">${c.res}</span>${c.gs ? '<span class="tag gs">GS</span>' : ''}${c.legacy ? '<span class="tag old">legacy</span>' : ''}</span>
+    </button>`;
+  }).join('') : '<p class="note" style="padding:12px 0">Ничего не нашлось. Попробуй другое слово или выбери «Все».</p>';
+}
+function renderCamDetail(cam){
+  let mi = parseInt(S.camMode, 10); if (!(mi >= 0 && mi < cam.modes.length)) mi = 0;
+  const m = cam.modes[mi];
+  H('cam-head', `<span class="label">${cam.brand} · ${cam.year}</span><h1 style="margin-top:6px">${cam.model}</h1>
+    <div class="tags" style="margin-top:10px"><span class="tag">${cam.fmt}</span>${cam.gs ? '<span class="tag gs">Глобальный затвор</span>' : ''}${cam.legacy ? `<span class="tag old">${cam.legacy}</span>` : ''}</div>`);
+  T('cam-modelabel', 'Сенсор, максимальная область');
+  const m0 = cam.modes[0];
+  H('cam-big', `${f(m0.w,2)} × ${f(m0.h,2)}<small>мм</small>`);
+  T('cam-bigsub', `${cam.res} · диагональ ${f(m0.d,2)} мм · кроп к FF ×${f(FF_D / m0.d, 2)}`);
+  $('cam-modes').innerHTML = cam.modes.map((x, i) => `<button class="mode" data-mode="${i}" aria-pressed="${i === mi}" id="mode-${cam.id}-${i}"><b>${x.n}</b><span>${x.calc ? '≈' : ''}${f(x.w,2)} × ${f(x.h,2)} · Ø${f(x.d,1)}</span></button>`).join('');
+  T('cam-modenote', cam.modes.some(x => x.calc) ? '≈ — размер рассчитан из шага пикселя или ширины сенсора, у производителя может отличаться на десятые доли миллиметра.' : '');
+
+  /* покрытие */
+  renderLensPicker();
+  const ic = num('lensIC');
+  const curLens = lensById(S.lensId);
+  if (ok(ic) && ic > 0) {
+    const status = x => { const mg = ic - x.d; return mg >= 1 ? ['ok-t','покрывает'] : mg >= 0 ? ['edge-t','на пределе'] : ['no-t','виньетирование']; };
+    const [cls, txt] = status(m);
+    const mg = ic - m.d;
+    H('cam-covbig', `<span class="${cls}">${txt}</span>`);
+    T('cam-covsub', `${curLens ? curLens.brand + ' ' + curLens.name + ' на ' : ''}${m.n}: диагональ кадра ${f(m.d,2)} мм, круг ${f(ic,1)} мм, ${mg >= 0 ? 'запас' : 'не хватает'} ${f(Math.abs(mg),2)} мм`);
+    $('cam-covrows').innerHTML = cam.modes.map((x, i) => { const [c, t] = status(x); return `<div class="row${i === mi ? ' hl' : ''}"><span>${x.n}</span><span class="${c}">${t} · Ø${f(x.d,1)}</span></div>`; }).join('');
+    drawCoverage(m, ic);
+  } else {
+    T('cam-covbig', '—'); T('cam-covsub', 'Введи круг изображения в миллиметрах.'); $('cam-covrows').innerHTML = ''; $('cam-cov').innerHTML = '';
+  }
+
+  /* угол обзора */
+  const F = num('camF');
+  if (ok(F) && F > 0) {
+    const ang = s => deg(2 * Math.atan(s / (2 * F)));
+    const crop = FF_D / m.d;
+    $('cam-fov').innerHTML = [
+      ['По горизонтали', f(ang(m.w),1) + '°'], ['По вертикали', f(ang(m.h),1) + '°'], ['По диагонали', f(ang(m.d),1) + '°'],
+      ['Кроп-фактор к FF (по диагонали)', '×' + f(crop, 2)], ['Эквивалент на FF', f(F * crop, 0) + ' мм']
+    ].map(([a, b], i) => `<div class="row${i === 4 ? ' hl' : ''}"><span>${a}</span><span>${b}</span></div>`).join('');
+  } else $('cam-fov').innerHTML = '<div class="row"><span>Введи фокусное расстояние</span><span>—</span></div>';
+
+  $('cam-specs').innerHTML = [['Сенсор', cam.sensor], ['Разрешение', cam.res], ['Шаг пикселя', cam.pitch]].concat(cam.specs)
+    .map(([a, b]) => `<div class="row"><span>${a}</span><span>${b}</span></div>`).join('');
+  H('cam-src', 'Источники: ' + cam.src.map(k => `<a href="${SRC[k][1]}" rel="noopener">${SRC[k][0]}</a>`).join(', '));
+}
+function drawCoverage(m, ic){
+  const W = 320, Hh = 190, pad = 12;
+  const span = Math.max(ic, m.w, m.h);
+  const sc = Math.min((W - 2 * pad) / Math.max(ic, m.w), (Hh - 2 * pad) / Math.max(ic, m.h));
+  const cx = W / 2, cy = Hh / 2;
+  const rw = m.w * sc, rh = m.h * sc, r = ic / 2 * sc;
+  const covered = ic >= m.d;
+  const ffw = 36 * sc, ffh = 24 * sc;
+  $('cam-cov').innerHTML = `
+    <defs><clipPath id="cc"><circle cx="${cx}" cy="${cy}" r="${r}"/></clipPath></defs>
+    <rect x="${cx - rw/2}" y="${cy - rh/2}" width="${rw}" height="${rh}" fill="${covered ? 'rgba(143,220,154,.10)' : 'rgba(255,110,94,.16)'}"/>
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="rgba(255,174,82,.10)" stroke="#ffae52" stroke-width="1.5"/>
+    <rect x="${cx - rw/2}" y="${cy - rh/2}" width="${rw}" height="${rh}" fill="rgba(143,220,154,.14)" clip-path="url(#cc)"/>
+    <rect x="${cx - rw/2}" y="${cy - rh/2}" width="${rw}" height="${rh}" fill="none" stroke="${covered ? '#8fdc9a' : '#ff6e5e'}" stroke-width="1.5"/>
+    <rect x="${cx - ffw/2}" y="${cy - ffh/2}" width="${ffw}" height="${ffh}" fill="none" stroke="#8f8b85" stroke-dasharray="3 4"/>
+    <text x="${cx - ffw/2 + 4}" y="${cy - ffh/2 - 4}" fill="#8f8b85" font-size="10" font-family="Golos Text, sans-serif">FF 36×24</text>
+    <text x="${W - pad}" y="${Hh - 6}" fill="#ffae52" font-size="11" text-anchor="end" font-family="Golos Text, sans-serif">Ø ${f(ic,1)} мм</text>`;
+}
+$('cam-list').addEventListener('click', e => {
+  const b = e.target.closest('[data-cam]'); if (!b) return;
+  S.camId = b.dataset.cam; S.camMode = '0'; save(); renderCameras(); window.scrollTo({ top: 0 });
+});
+$('cam-back').addEventListener('click', () => { S.camId = ''; save(); renderCameras(); window.scrollTo({ top: 0 }); });
+$('cam-modes').addEventListener('click', e => {
+  const b = e.target.closest('[data-mode]'); if (!b) return;
+  S.camMode = b.dataset.mode; save(); renderCameras();
+});
+$('cam-presets').addEventListener('click', e => {
+  const b = e.target.closest('[data-ic]'); if (!b) return;
+  S.lensIC = b.dataset.ic; S.lensId = ''; syncBound(); save(); renderCameras();
+});
+$('cam-todolly').addEventListener('click', () => {
+  const cam = camById(S.camId); if (!cam) return;
+  const m = cam.modes[parseInt(S.camMode, 10) || 0];
+  S.sw = String(m.w).replace('.', ','); S.sensor = 'custom'; S.swNote = `${cam.model} · ${m.n}`;
+  if (ok(num('camF'))) S.F1 = S.camF;
+  syncBound(); save(); renderAll(); setTool('dolly', true); window.scrollTo({ top: 0 });
+});
+
+/* ---------- База объективов ---------- */
+/* ic — круг изображения, мм. v — варианты внутри серии с другим кругом. calc — число выведено из формата, который указал производитель */
+const LSRC = {
+  sigp: ['arri.com · Signature Prime, брошюра (PDF)', 'https://www.arri.com/resource/blob/225644/19851d0ec1bdff88d86e254dd71f34f3/signature-brochure-data.pdf'],
+  sigz: ['arri.com · Signature lenses', 'https://www.arri.com/en/cine-lenses/signature-lenses/signature-primes-zooms'],
+  az: ['zeiss.com · ARRI/ZEISS', 'https://www.zeiss.com/photonics-and-optics/us/cinematography/lenses/arrizeiss.html'],
+  zill: ['zeiss.com · Lens Illumination', 'https://www.zeiss.com/photonics-and-optics/en/cinematography/know-how-hub/lens-illumination.html'],
+  zsup: ['zeiss.com · Supreme Prime Radiance', 'https://www.zeiss.com/photonics-and-optics/us/home/content/newsroom/news-overview/2021/zeiss-supreme-prime-radiance.html'],
+  zcp3: ['lenspire.zeiss.com · CP.3', 'https://lenspire.zeiss.com/cine/en/article/large-image-circle-universal-usability-the-compact-prime-cp-3-and-cinema-zoom-cz-2-lens-families'],
+  s4: ['cookeoptics.com · S4/i spec (PDF)', 'https://cookeoptics.com/wp-content/uploads/2021/11/COOKE_S4i_Specification_110222.pdf'],
+  s7: ['cookeoptics.com · S7/i', 'https://idata.cookeoptics.com/products/cooke-optics/spherical/cooke-s7i-full-frame-lenses.html'],
+  s8: ['cookeoptics.com · S8/i FF', 'https://cookeoptics.com/lens/s8-i-ff/'],
+  s8fdt: ['Cooke S8/i Special Report (PDF)', 'https://cookeoptics.com/wp-content/uploads/2022/05/114-FDTimes-6.30-Cooke-Report.pdf'],
+  pcs35: ['cookeoptics.com · Panchro/i Classic S35 (PDF)', 'https://cookeoptics.com/wp-content/uploads/2022/10/COOKE_Panchro-i-Classic-S35_Specification_030623.pdf'],
+  pc21: ['cookeoptics.com · Panchro/i Classic 21mm', 'https://idata.cookeoptics.com/products/cooke-optics/spherical/cooke-ckepc%2021.html'],
+  pcff: ['cookeoptics.com · Panchro/i Classic FF (PDF)', 'https://cookeoptics.com/wp-content/uploads/2022/10/COOKE_Panchro-i-Classic-FF_Specification_051324.pdf'],
+  anaff: ['cookeoptics.com · Anamorphic/i FF+', 'https://idata.cookeoptics.com/products/cooke-optics/fullframeplus/cooke-anamorphic-full-frame-plus-lenses.html'],
+  slux: ['leitz-cine.com · SUMMILUX-C', 'https://www.leitz-cine.com/product/summilux-c'],
+  scron: ['leitz-cine.com · SUMMICRON-C', 'https://www.leitz-cine.com/product/summicron-c'],
+  thalia: ['leitz-cine.com · THALIA', 'https://www.leitz-cine.com/product/thalia'],
+  leitz: ['Leitz Special Edition (PDF)', 'https://www.leitz-cine.com/fileadmin/upload_media/117-FDTimes-Leitz-Special.pdf'],
+  optp: ['angenieux.com · Optimo Prime', 'https://www.angenieux.com/lenses/optimo-prime-series/'],
+  o290: ['angenieux.com · Optimo 24-290', 'https://www.angenieux.com/lenses/legacy-series/optimo-long-lens-zoom-24-290/'],
+  prem: ['fujifilm.com · Premista', 'https://www.fujifilm.com/us/en/business/cine-and-broadcast/cine-lens/premista'],
+  sumire: ['canon-europe.com · Sumire Prime', 'https://www.canon-europe.com/lenses/sumire-prime-series/'],
+  sigma: ['sigma-global.com · FF High Speed Prime', 'https://www.sigma-global.com/en/cine-lenses/ff-high-speed-prime/35_15/'],
+  tokina: ['FDTimes · Tokina Cinema Vista', 'https://www.fdtimes.com/?p=43305'],
+  vespid: ['dzofilm.com · Vespid Prime', 'https://dzofilm.com/en/lens/prime/vespid-prime'],
+  vespid2: ['dzofilm.com · Vespid Prime 2', 'https://dzofilm.com/en/lens/prime/vespid-prime2'],
+  arles: ['dzofilm.com · Arles Prime', 'https://dzofilm.com/en/lens/prime/arles-prime'],
+  orion: ['hdgear.tv · Atlas Orion (дилер)', 'https://hdgear.tv/brand/atlas-lens-co'],
+  mercury: ['Newsshooter · Atlas Mercury', 'https://www.newsshooter.com/?p=258060']
+};
+const LENSES = [
+  { id:'sigprime', brand:'ARRI', name:'Signature Prime', type:'Фикс', ic:46.3, t:'T1.8 (200 мм T2.5, 280 мм T2.8)', focals:'12, 15, 18, 21, 25, 29, 35, 40, 47, 58, 75, 95, 125, 150, 200, 280 мм', mount:'LPL', src:['sigp'] },
+  { id:'sigzoom', brand:'ARRI', name:'Signature Zoom', type:'Зум', ic:46.0, t:'T2.8', focals:'16–32, 24–75, 45–135, 65–300 мм', mount:'LPL', note:'ARRI пишет «покрывают круги изображения до 46 мм».', src:['sigz'] },
+  { id:'masterprime', brand:'ARRI', name:'ARRI/ZEISS Master Prime', type:'Фикс', ic:31.1, calc:true, t:'T1.3', focals:'серия S35', mount:'PL', note:'Производитель указывает формат Super 35 (24,9 × 18,7 мм), а не диаметр. Здесь взята диагональ этого кадра.', src:['az','zill'] },
+  { id:'ultraprime', brand:'ARRI', name:'ARRI/ZEISS Ultra Prime', type:'Фикс', ic:31.1, calc:true, t:'T1.9', focals:'серия S35', mount:'PL', note:'Производитель указывает формат Super 35 (24,9 × 18,7 мм), а не диаметр. Здесь взята диагональ этого кадра.', src:['az'] },
+
+  { id:'supreme', brand:'ZEISS', name:'Supreme Prime', type:'Фикс', ic:46.3, t:'T1.5 (часть фокусов T1.8–T2.2)', focals:'15–200 мм', mount:'PL, LPL', src:['zsup'] },
+  { id:'radiance', brand:'ZEISS', name:'Supreme Prime Radiance', type:'Фикс', ic:46.3, t:'T1.5', focals:'18, 21, 25, 29, 35, 40, 50, 65, 85, 100, 135 мм', mount:'PL, LPL', src:['zsup'] },
+  { id:'cp3', brand:'ZEISS', name:'Compact Prime CP.3', type:'Фикс', ic:43.3, calc:true, t:'T2.1 (15–21 мм T2.9)', focals:'15, 18, 21, 25, 28, 35, 50, 85, 100, 135 мм', mount:'PL, EF, E, F, MFT', note:'ZEISS указывает покрытие полного кадра 36 × 24 мм. На 8K VV (Ø46,3) у 15 мм возможна лёгкая виньетка.', src:['zcp3'] },
+
+  { id:'s4i', brand:'Cooke', name:'S4/i', type:'Фикс', ic:30.0, t:'T2', focals:'12–300 мм (18 фокусов)', mount:'PL', src:['s4'] },
+  { id:'s7i', brand:'Cooke', name:'S7/i FF', type:'Фикс', ic:46.31, t:'T2', focals:'16–300 мм (14 фокусов)', mount:'PL, LPL', note:'Cooke: «покрывает минимум 46,31 мм».', src:['s7'] },
+  { id:'s8i', brand:'Cooke', name:'S8/i FF', type:'Фикс', ic:46.31, t:'T1.4', focals:'18–135 мм (12 фокусов)', mount:'PL, LPL', v:[{n:'25 мм и длиннее',ic:46.31},{n:'18 и 21 мм',ic:43.3}], src:['s8','s8fdt'] },
+  { id:'pcs35', brand:'Cooke', name:'Panchro/i Classic S35', type:'Фикс', ic:31.1, t:'T2.2', focals:'18–152 мм', mount:'PL', v:[{n:'18–50 мм',ic:31.1},{n:'65 Macro–152 мм',ic:43.3,calc:true}], note:'Длинные фокусы 65 Macro, 75, 100, 135, 152 мм у Cooke значатся как Full Frame.', src:['pcs35','pc21'] },
+  { id:'pcff', brand:'Cooke', name:'Panchro/i Classic FF', type:'Фикс', ic:43.3, t:'T2.2', focals:'18–152 мм (12 фокусов)', mount:'PL, LPL', src:['pcff'] },
+  { id:'anaff', brand:'Cooke', name:'Anamorphic/i FF 1.8x', type:'Анаморфот', ic:43.3, calc:true, t:'—', focals:'серия 1.8x', mount:'PL', note:'Cooke указывает максимальный кадр 36 × 24 мм.', src:['anaff'] },
+
+  { id:'summilux', brand:'Leitz', name:'SUMMILUX-C', type:'Фикс', ic:33, t:'T1.4', focals:'16–135 мм (12 фокусов)', mount:'PL', src:['slux','leitz'] },
+  { id:'summicron', brand:'Leitz', name:'SUMMICRON-C', type:'Фикс', ic:36, t:'T2.0', focals:'15–135 мм (11 фокусов)', mount:'PL', src:['scron','leitz'] },
+  { id:'leitzm08', brand:'Leitz', name:'M 0.8', type:'Фикс', ic:43.3, t:'—', focals:'серия', mount:'M, PL', src:['leitz'] },
+  { id:'elsie', brand:'Leitz', name:'ELSIE', type:'Фикс', ic:46.5, t:'—', focals:'серия', mount:'LPL', src:['leitz'] },
+  { id:'leitzprime', brand:'Leitz', name:'LEITZ PRIME', type:'Фикс', ic:46.5, t:'—', focals:'серия', mount:'LPL', src:['leitz'] },
+  { id:'thalia', brand:'Leitz', name:'THALIA', type:'Фикс', ic:60, t:'—', focals:'20–180 мм (11 фокусов)', mount:'PL, LPL', src:['thalia','leitz'] },
+
+  { id:'optprime', brand:'Angénieux', name:'Optimo Prime', type:'Фикс', ic:46.31, t:'T1.8 (крайние фокусы T2)', focals:'18, 21, 24, 28, 32, 40, 50, 60, 75, 100, 135, 200 мм', mount:'PL, LPL', src:['optp'] },
+  { id:'o290', brand:'Angénieux', name:'Optimo 24-290', type:'Зум', ic:30, t:'T2.8', focals:'24–290 мм', mount:'PL', v:[{n:'Без экстендера',ic:30},{n:'С экстендером',ic:31.4}], src:['o290'] },
+
+  { id:'premista', brand:'Fujinon', name:'Premista', type:'Зум', ic:46.3, t:'T2.9 (80–250 до T3.5)', focals:'19–45, 28–100, 80–250 мм', mount:'PL', src:['prem'] },
+  { id:'sumire', brand:'Canon', name:'Sumire Prime', type:'Фикс', ic:43.3, calc:true, t:'T1.3–T3.1', focals:'14, 20, 24, 35, 50, 85, 135 мм', mount:'PL (меняется на EF)', note:'Canon указывает «полнокадровый круг изображения» без числа. Здесь взята диагональ 36 × 24.', src:['sumire'] },
+  { id:'sigmaff', brand:'Sigma', name:'Cine FF High Speed Prime', type:'Фикс', ic:43.3, t:'T1.5 / T2', focals:'14–135 мм (11 фокусов)', mount:'PL, EF, E', note:'Sigma: круг изображения 43,3 мм, круг освещённости больше 46,3 мм.', src:['sigma'] },
+  { id:'tokina', brand:'Tokina', name:'Cinema Vista Prime', type:'Фикс', ic:46.7, t:'T1.5', focals:'18–180 мм', mount:'PL, LPL, EF, E, MFT', src:['tokina'] },
+  { id:'vespid', brand:'DZOFilm', name:'Vespid Prime', type:'Фикс', ic:46.5, t:'T2.1 / T2.8', focals:'12–125 мм (11 фокусов)', mount:'PL, EF', src:['vespid'] },
+  { id:'vespid2', brand:'DZOFilm', name:'Vespid Prime 2', type:'Фикс', ic:46.5, t:'T1.9', focals:'18, 24, 35, 50, 85, 105 мм', mount:'PL', src:['vespid2'] },
+  { id:'arles', brand:'DZOFilm', name:'Arles Prime', type:'Фикс', ic:46.5, t:'T1.4–T2.4', focals:'14–180 мм (11 фокусов)', mount:'PL, EF', src:['arles'] },
+  { id:'orion', brand:'Atlas', name:'Orion 2x', type:'Анаморфот', ic:31, t:'T2', focals:'серия 2x', mount:'PL, EF', note:'Число с сайтов дилеров. С экстендером Atlas LF 1.4x покрывает полный кадр.', src:['orion'] },
+  { id:'mercury', brand:'Atlas', name:'Mercury 1.5x', type:'Анаморфот', ic:44.7, calc:true, t:'T2.2', focals:'серия 1.5x', mount:'PL', note:'Указано покрытие кадра 36,7 × 25,54 мм. Здесь взята его диагональ.', src:['mercury'] },
+
+  { id:'photoff', brand:'Прочие', name:'Фотообъектив полного кадра', type:'Фото', ic:43.3, calc:true, t:'—', focals:'EF, RF, E, L, Z', mount:'—', note:'Типовой круг 36 × 24. Реальный у конкретной модели обычно чуть больше.', src:[] }
+];
+const LBRANDS = ['all', ...Array.from(new Set(LENSES.map(l => l.brand)))];
+const lensById = id => LENSES.find(l => l.id === id);
+const lensIC = (l, vi) => (l.v && l.v[vi]) ? l.v[vi].ic : l.ic;
+const covStatus = (ic, d) => { const mg = ic - d; return mg >= 1 ? ['ok-t','покрывает'] : mg >= 0 ? ['edge-t','на пределе'] : ['no-t','виньетирование']; };
+
+(function buildLensSelect(){
+  const sel = $('cam-lens');
+  let html = '<option value="">Свой круг изображения</option>';
+  LBRANDS.slice(1).forEach(b => {
+    html += `<optgroup label="${b}">` + LENSES.filter(l => l.brand === b).map(l => `<option value="${l.id}">${l.name} · Ø${f(l.ic,1)}</option>`).join('') + '</optgroup>';
+  });
+  sel.innerHTML = html;
+  sel.addEventListener('change', () => {
+    S.lensId = sel.value; S.lensVar = '0';
+    const l = lensById(S.lensId); if (l) S.lensIC = String(lensIC(l, 0)).replace('.', ',');
+    syncBound(); save(); renderCameras();
+  });
+  $('lens-brands').innerHTML = LBRANDS.map(b => `<button data-v="${b}" id="lb-${b.replace(/[^a-z]/gi,'')}">${b === 'all' ? 'Все' : b}</button>`).join('');
+})();
+
+function renderLensPicker(){
+  const l = lensById(S.lensId);
+  $('cam-lens').value = l ? l.id : '';
+  const vi = parseInt(S.lensVar, 10) || 0;
+  $('cam-lensvars').innerHTML = l && l.v ? l.v.map((x, i) => `<button class="btn" data-lv="${i}" aria-pressed="${i === vi}" id="clv-${i}">${x.n} · Ø${f(x.ic,1)}</button>`).join('') : '';
+}
+$('cam-lensvars').addEventListener('click', e => {
+  const b = e.target.closest('[data-lv]'); if (!b) return;
+  const l = lensById(S.lensId); if (!l) return;
+  S.lensVar = b.dataset.lv; S.lensIC = String(lensIC(l, +S.lensVar)).replace('.', ',');
+  syncBound(); save(); renderCameras();
+});
+
+function renderLenses(){
+  const l = lensById(S.lensView);
+  $('lens-listview').hidden = !!l;
+  $('lens-detail').hidden = !l;
+  if (!l) {
+    const q = String(S.lensQ || '').trim().toLowerCase();
+    const list = LENSES.filter(x => (S.lensBrand === 'all' || x.brand === S.lensBrand) && (!q || (x.brand + ' ' + x.name).toLowerCase().includes(q)));
+    T('lens-lede', `${LENSES.length} серий. Круги изображения по данным производителей. Открой серию, чтобы увидеть, какие камеры и режимы она покрывает.`);
+    $('lens-list').innerHTML = list.length ? list.map(x => `<button class="cam" data-lens="${x.id}" id="lens-${x.id}">
+        <span><span class="br">${x.brand} · ${x.type}</span><br><span class="nm">${x.name}</span></span>
+        <span class="right"><b>Ø ${f(x.ic,1)}</b>${x.v ? 'мм · варианты' : 'мм'}</span>
+        <span class="tags"><span class="tag">${x.t}</span><span class="tag">${x.mount}</span></span>
+      </button>`).join('') : '<p class="note" style="padding:12px 0">Ничего не нашлось.</p>';
+    return;
+  }
+  let vi = parseInt(S.lensVar, 10) || 0; if (!(l.v && l.v[vi])) vi = 0;
+  const ic = lensIC(l, vi);
+  const calc = (l.v && l.v[vi] && l.v[vi].calc) || (!l.v && l.calc) || (l.v && vi === 0 && l.calc);
+  H('lens-head', `<span class="label">${l.brand} · ${l.type}</span><h1 style="margin-top:6px">${l.name}</h1>`);
+  H('lens-big', `${calc ? '≈' : ''}${f(ic, 2)}<small>мм</small>`);
+  T('lens-sub', l.note || 'Круг изображения по спецификации производителя.');
+  $('lens-vars').innerHTML = l.v ? l.v.map((x, i) => `<button class="btn" data-lvv="${i}" aria-pressed="${i === vi}" id="llv-${i}">${x.n} · Ø${f(x.ic,1)}</button>`).join('') : '';
+  $('lens-specs').innerHTML = [['Светосила', l.t], ['Фокусные', l.focals], ['Байонет', l.mount]].map(([a, b]) => `<div class="row"><span>${a}</span><span>${b}</span></div>`).join('');
+  $('lens-cams').innerHTML = CAMS.map(c => {
+    const covered = c.modes.map((m, i) => ({ m, i })).filter(o => ic - o.m.d >= 0);
+    const full = ic - c.modes[0].d;
+    let cls, txt, best = 0;
+    if (full >= 0) { [cls] = covStatus(ic, c.modes[0].d); txt = (full >= 1 ? 'весь сенсор' : 'весь сенсор, на пределе') + ` · ${c.modes[0].n}`; }
+    else if (covered.length) { const b = covered.sort((a, b2) => b2.m.d - a.m.d)[0]; best = b.i; cls = 'edge-t'; txt = `до режима ${b.m.n} (Ø${f(b.m.d,1)})`; }
+    else { cls = 'no-t'; txt = 'не покрывает ни один режим'; }
+    return `<button class="cam stack" data-camgo="${c.id}" data-mode="${best}" id="lc-${c.id}">
+      <span><span class="br">${c.brand}</span><br><span class="nm" style="font-size:18px">${c.model}</span></span>
+      <span class="${cls}" style="font-size:13px;grid-column:1 / -1">${txt}</span>
+    </button>`;
+  }).join('');
+  H('lens-src', l.src.length ? 'Источники: ' + l.src.map(k => `<a href="${LSRC[k][1]}" rel="noopener">${LSRC[k][0]}</a>`).join(', ') : '');
+}
+$('lens-list').addEventListener('click', e => {
+  const b = e.target.closest('[data-lens]'); if (!b) return;
+  S.lensView = b.dataset.lens; S.lensVar = '0'; save(); renderLenses(); window.scrollTo({ top: 0 });
+});
+$('lens-back').addEventListener('click', () => { S.lensView = ''; save(); renderLenses(); window.scrollTo({ top: 0 }); });
+$('lens-vars').addEventListener('click', e => {
+  const b = e.target.closest('[data-lvv]'); if (!b) return;
+  S.lensVar = b.dataset.lvv; save(); renderLenses();
+});
+$('lens-cams').addEventListener('click', e => {
+  const b = e.target.closest('[data-camgo]'); if (!b) return;
+  const l = lensById(S.lensView); if (!l) return;
+  const vi = parseInt(S.lensVar, 10) || 0;
+  S.lensId = l.id; S.lensIC = String(lensIC(l, vi)).replace('.', ',');
+  S.camId = b.dataset.camgo; S.camMode = b.dataset.mode || '0';
+  syncBound(); save(); renderAll(); setTool('cameras', true); window.scrollTo({ top: 0 });
+});
+
+/* ---------- Привязка полей ---------- */
+const RENDER = { cameras: renderCameras, lenses: renderLenses, color: renderColor, wb: renderWB, light: renderLight, dolly: renderDolly, card: renderCard, cone: renderCone, golden: renderGolden };
+function renderAll(){ Object.values(RENDER).forEach(fn => { try { fn(); } catch(e) { console.error(e); } }); }
+
+function syncBound(srcId){
+  document.querySelectorAll('[data-bind]').forEach(el => {
+    if (el.id === srcId) return;
+    const k = el.dataset.bind;
+    if (el.type === 'range') { const v = num(k); if (Number.isFinite(v)) el.value = v; }
+    else el.value = S[k] ?? '';
+  });
+  document.querySelectorAll('[data-seg]').forEach(seg => {
+    const k = seg.dataset.seg;
+    seg.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === S[k])));
+  });
+}
+
+document.querySelectorAll('[data-bind]').forEach(el => {
+  el.addEventListener('input', () => {
+    const k = el.dataset.bind;
+    S[k] = el.value;
+    if (k === 'sw') { S.sensor = 'custom'; S.swNote = ''; }
+    if (k === 'lensIC') S.lensId = '';
+    syncBound(el.id); save(); renderAll();
+  });
+});
+document.querySelectorAll('[data-seg]').forEach(seg => {
+  seg.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    const k = seg.dataset.seg; S[k] = b.dataset.v;
+    if (k === 'sensor') { S.swNote = ''; if (S.sensor === 's35') S.sw = '24,9'; if (S.sensor === 'ff') S.sw = '36'; }
+    if (k === 'camBrand') S.camId = '';
+    if (k === 'lensBrand') S.lensView = '';
+    syncBound(); save(); renderAll();
+  });
+});
+
+/* ---------- Копирование ---------- */
+document.querySelectorAll('[data-copy]').forEach(btn => {
+  btn.addEventListener('click', async () => {
+    const text = $(btn.dataset.copy).textContent;
+    try { await navigator.clipboard.writeText(text); T('c-copied', `Скопировано: ${text}`); }
+    catch (e) { T('c-copied', 'Не получилось скопировать. Выдели значение и скопируй вручную.'); }
+  });
+});
+
+/* ---------- Вкладки ---------- */
+function setTool(t, push){
+  if (!TOOLS.includes(t)) t = 'color';
+  S.tool = t; save();
+  TOOLS.forEach(id => {
+    $('tool-' + id).hidden = id !== t;
+    const tab = $('tab-' + id); tab.setAttribute('aria-selected', String(id === t)); tab.tabIndex = id === t ? 0 : -1;
+  });
+  const tab = $('tab-' + t);
+  try { tab.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' }); } catch(e) {}
+  if (push) { try { history.replaceState(null, '', '#' + t); } catch(e) { try { location.hash = t; } catch(_) {} } }
+}
+document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => { setTool(b.dataset.tool, true); window.scrollTo({ top: 0 }); }));
+window.addEventListener('hashchange', () => setTool(location.hash.slice(1), false));
+
+/* ---------- Старт ---------- */
+function start(data){
+  load();
+  if (data && data.S) Object.assign(S, data.S);
+  syncBound(); renderAll();
+  const h = (location.hash || '').slice(1);
+  setTool(TOOLS.includes(h) ? h : S.tool, false);
+}
+try { window.claude?.hot?.snapshot?.(() => ({ S })); } catch(e) {}
+if (window.claude?.hot?.ready) window.claude.hot.ready(start); else start(window.claude?.hot?.data ?? {});
+})();
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function(){ navigator.serviceWorker.register('sw.js').catch(function(){}); });
+}
+</script>
+</body>
+</html>
